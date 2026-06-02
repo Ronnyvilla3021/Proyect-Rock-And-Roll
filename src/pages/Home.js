@@ -30,12 +30,12 @@ const Card = ({ title, image, link }) => (
 const Home = () => {
     // Lista de bandas (datos para las tarjetas)
     const bands = [
-        { title: "⚡AC/DC⚡", image: "https://w1.pngwing.com/pngs/821/327/png-transparent-child-logo-acdc-badge-red-text.png", link: "/acdc" },
-        { title: "🦇Ozzy Osbourne🦇", image: "https://thumbs.dreamstime.com/b/logotipo-vectorial-de-ozzy-osbourne-aislado-en-fondo-blanco-306334145.jpg", link: "/Ozzy Osbourne" },
-        { title: "👅Kiss👅", image: "https://cdn11.bigcommerce.com/s-c9a80/images/stencil/1280x1280/products/12978/44885/kiss_chunky_magnet__22190.1649795023.png?c=2", link: "/Kiss" },
-        { title: "🔥Iron Maiden🔥", image: "https://mussica.info/wp-content/uploads/2021/09/iron-maiden-intro.jpeg", link: "/Iron Maiden" },
-        { title: "🦇Black Sabbath🦇", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCIexR8SNEIi24ZwWfCk5UY2oVwHZTHTpNBw&s", link: "/Black Sabbath" },
-    ];
+    { title: "⚡AC/DC⚡", image: "https://w1.pngwing.com/pngs/821/327/png-transparent-child-logo-acdc-badge-red-text.png", link: "/acdc" },
+    { title: "🦇Ozzy Osbourne🦇", image: "https://thumbs.dreamstime.com/b/logotipo-vectorial-de-ozzy-osbourne-aislado-en-fondo-blanco-306334145.jpg", link: "/ozzy" },
+    { title: "👅Kiss👅", image: "https://cdn11.bigcommerce.com/s-c9a80/images/stencil/1280x1280/products/12978/44885/kiss_chunky_magnet__22190.1649795023.png?c=2", link: "/kiss" },
+    { title: "🔥Iron Maiden🔥", image: "https://mussica.info/wp-content/uploads/2021/09/iron-maiden-intro.jpeg", link: "/ironmaiden" },
+    { title: "🦇Black Sabbath🦇", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCIexR8SNEIi24ZwWfCk5UY2oVwHZTHTpNBw&s", link: "/blacksabbath" },
+];
 
     return (
         <div className={styles.page}> {/* Contenedor principal que usa styles.page */}
@@ -45,11 +45,11 @@ const Home = () => {
             {/* ===================== */}
             <nav className={styles.mainNav}> {/* Barra de navegación que usa styles.mainNav */}
                 <ul className={styles.bandList}> {/* Lista de bandas que usa styles.bandList */}
-                    <li><a href="/acdc" className={`${styles.navItem} ${styles.acdc}`}>AC/DC</a></li> {/* Enlace AC/DC */}
-                    <li><a href="/ozzy" className={`${styles.navItem} ${styles.ozzy}`}>Ozzy Osbourne</a></li> {/* Enlace Ozzy */}
-                    <li><a href="/Kiss" className={`${styles.navItem} ${styles.kiss}`}>Kiss</a></li> {/* Enlace Kiss */}
-                    <li><a href="/Iron Maiden" className={`${styles.navItem} ${styles.ironMaiden}`}>Iron Maiden</a></li> {/* Enlace Iron Maiden */}
-                    <li><a href="/Black Sabbath" className={`${styles.navItem} ${styles.blackSabbath}`}>Black Sabbath</a></li> {/* Enlace Black Sabbath */}
+                    <li><a href="/acdc" className={`${styles.navItem} ${styles.acdc}`}>AC/DC</a></li>
+<li><a href="/ozzy" className={`${styles.navItem} ${styles.ozzy}`}>Ozzy Osbourne</a></li>
+<li><a href="/kiss" className={`${styles.navItem} ${styles.kiss}`}>Kiss</a></li>
+<li><a href="/ironmaiden" className={`${styles.navItem} ${styles.ironMaiden}`}>Iron Maiden</a></li>
+<li><a href="/blacksabbath" className={`${styles.navItem} ${styles.blackSabbath}`}>Black Sabbath</a></li>
                 </ul>
             </nav>
 

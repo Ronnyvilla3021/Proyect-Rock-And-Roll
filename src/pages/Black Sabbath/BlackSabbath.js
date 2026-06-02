@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styles from './OZZY.module.css';
+import styles from './BlackSabbath.module.css';
 import { Link } from 'react-router-dom';
 
-const Ozzy = () => {
+const BlackSabbath = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimated, setIsAnimated] = useState(false);
     const totalSlides = 3;
@@ -17,30 +17,30 @@ const Ozzy = () => {
     const nextSlide = () => setCurrentIndex((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
 
     const images = [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Ozzy_Osbourne_-_Ozzfest_2010.jpg/800px-Ozzy_Osbourne_-_Ozzfest_2010.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Ozzy_Osbourne_2019.jpg/440px-Ozzy_Osbourne_2019.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Ozzy_Osbourne_-_2011.jpg/440px-Ozzy_Osbourne_-_2011.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Black_Sabbath_-_The_End_Tour_2016.jpg/1200px-Black_Sabbath_-_The_End_Tour_2016.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Black_Sabbath_2013.jpg/1200px-Black_Sabbath_2013.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Black_Sabbath_in_1973.jpg/1200px-Black_Sabbath_in_1973.jpg",
     ];
 
     return (
-        <div className={styles.ozzyPage}>
-            <nav className={styles.ozzyNav}>
+        <div className={styles.sabbathPage}>
+            <nav className={styles.sabbathNav}>
                 <div className={styles.navContainer}>
                     <Link to="/" className={styles.navItem}>INICIO</Link>
                     <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy" className={`${styles.navItem} ${styles.ozzyActive}`}>OZZY</Link>
+                    <Link to="/blacksabbath" className={`${styles.navItem} ${styles.sabbathActive}`}>BLACK SABBATH</Link>
                     <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy/historia" className={styles.navItem}>HISTORIA</Link>
+                    <Link to="/blacksabbath/historia" className={styles.navItem}>HISTORIA</Link>
                     <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy/albunes" className={styles.navItem}>ÁLBUMES</Link>
+                    <Link to="/blacksabbath/albunes" className={styles.navItem}>ÁLBUMES</Link>
                     <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy/grupo" className={styles.navItem}>GRUPO</Link>
+                    <Link to="/blacksabbath/grupo" className={styles.navItem}>GRUPO</Link>
                 </div>
             </nav>
 
             <div className={styles.logoContainer}>
-                <h1 className={styles.logo}>OZZY<span className={styles.logoSub}>OSBOURNE</span></h1>
-                <p className={styles.tagline}>THE PRINCE OF DARKNESS</p>
+                <h1 className={styles.logo}>BLACK<span className={styles.logoSub}>SABBATH</span></h1>
+                <p className={styles.tagline}>THE GODFATHERS OF HEAVY METAL</p>
             </div>
 
             <div className={styles.sliderContainer}>
@@ -59,27 +59,27 @@ const Ozzy = () => {
             <div className={styles.content}>
                 <section className={styles.rockSection}>
                     <h2 className={styles.sectionTitle}>
-                        <span className={styles.titleOutline}>OZZY</span>
-                        <span className={styles.titleMain}>EL PRÍNCIPE DE LAS TINIEBLAS</span>
+                        <span className={styles.titleOutline}>SABBATH</span>
+                        <span className={styles.titleMain}>🦇 LOS PADRINOS DEL HEAVY METAL</span>
                     </h2>
                     <p className={styles.rockText}>
-                        <strong>John Michael Osbourne</strong>, conocido mundialmente como <strong>Ozzy Osbourne</strong>, nació el 3 de diciembre de 1948 en Birmingham, Inglaterra. Apodado el <em>"Príncipe de las Tinieblas"</em>, es una de las figuras más icónicas e influyentes del rock y el heavy metal.
+                        Formados en 1968 en Birmingham, Inglaterra, <strong>Black Sabbath</strong> inventaron el heavy metal. <strong>Ozzy Osbourne, Tony Iommi, Geezer Butler y Bill Ward</strong> crearon un sonido oscuro, pesado y amenazante que nunca había existido antes, cambiando la música para siempre.
                     </p>
                     <p className={styles.rockText}>
-                        Comenzó su carrera como vocalista de <strong>Black Sabbath</strong> en 1968, banda con la que definió los cimientos del heavy metal. Tras su salida en 1979, inició una brillante carrera en solitario con álbumes legendarios como <em>"Blizzard of Ozz"</em> y <em>"Diary of a Madman"</em>.
+                        Con álbumes icónicos como <em>"Black Sabbath"</em>, <em>"Paranoid"</em> y <em>"Master of Reality"</em>, establecieron las bases del heavy metal, el doom metal y el stoner rock. Su influencia es incalculable: prácticamente todo el rock pesado moderno les debe su existencia.
                     </p>
                 </section>
                 <div className={styles.officialLink}>
                     <p className={styles.linkText}>VISITA SU PÁGINA OFICIAL</p>
-                    <a href="https://www.ozzy.com/" target="_blank" rel="noreferrer" className={styles.ampButton}>
-                        🦇 ENTRA AL REINO OSCURO 🦇
+                    <a href="https://www.blacksabbath.com/" target="_blank" rel="noreferrer" className={styles.ampButton}>
+                        🦇 ENTRA AL SABBATH 🦇
                     </a>
                 </div>
             </div>
 
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
-                    <p className={styles.copyright}>© {new Date().getFullYear()} R.A.V.V 🦇 OZZY OSBOURNE 🦇</p>
+                    <p className={styles.copyright}>© {new Date().getFullYear()} R.A.V.V 🦇 BLACK SABBATH 🦇</p>
                     <div className={styles.socialIcons}>
                         <span className={styles.icon}>🎸</span>
                         <span className={styles.icon}>🦇</span>
@@ -91,4 +91,4 @@ const Ozzy = () => {
     );
 };
 
-export default Ozzy;
+export default BlackSabbath;

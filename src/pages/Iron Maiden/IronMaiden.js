@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styles from './OZZY.module.css';
+import styles from './IronMaiden.module.css';
 import { Link } from 'react-router-dom';
 
-const Ozzy = () => {
+const IronMaiden = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimated, setIsAnimated] = useState(false);
     const totalSlides = 3;
@@ -17,30 +17,30 @@ const Ozzy = () => {
     const nextSlide = () => setCurrentIndex((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
 
     const images = [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Ozzy_Osbourne_-_Ozzfest_2010.jpg/800px-Ozzy_Osbourne_-_Ozzfest_2010.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Ozzy_Osbourne_2019.jpg/440px-Ozzy_Osbourne_2019.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Ozzy_Osbourne_-_2011.jpg/440px-Ozzy_Osbourne_-_2011.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Iron_Maiden_-_Ullevi_2011.jpg/1200px-Iron_Maiden_-_Ullevi_2011.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Iron_Maiden_-_Ozzfest_2005.jpg/1200px-Iron_Maiden_-_Ozzfest_2005.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Iron_Maiden_-_Donington_2007.jpg/1200px-Iron_Maiden_-_Donington_2007.jpg",
     ];
 
     return (
-        <div className={styles.ozzyPage}>
-            <nav className={styles.ozzyNav}>
+        <div className={styles.maidenPage}>
+            <nav className={styles.maidenNav}>
                 <div className={styles.navContainer}>
                     <Link to="/" className={styles.navItem}>INICIO</Link>
                     <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy" className={`${styles.navItem} ${styles.ozzyActive}`}>OZZY</Link>
+                    <Link to="/ironmaiden" className={`${styles.navItem} ${styles.maidenActive}`}>IRON MAIDEN</Link>
                     <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy/historia" className={styles.navItem}>HISTORIA</Link>
+                    <Link to="/ironmaiden/historia" className={styles.navItem}>HISTORIA</Link>
                     <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy/albunes" className={styles.navItem}>ÁLBUMES</Link>
+                    <Link to="/ironmaiden/albunes" className={styles.navItem}>ÁLBUMES</Link>
                     <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy/grupo" className={styles.navItem}>GRUPO</Link>
+                    <Link to="/ironmaiden/grupo" className={styles.navItem}>GRUPO</Link>
                 </div>
             </nav>
 
             <div className={styles.logoContainer}>
-                <h1 className={styles.logo}>OZZY<span className={styles.logoSub}>OSBOURNE</span></h1>
-                <p className={styles.tagline}>THE PRINCE OF DARKNESS</p>
+                <h1 className={styles.logo}>IRON<span className={styles.logoSub}>MAIDEN</span></h1>
+                <p className={styles.tagline}>UP THE IRONS! — EDDIE LIVES!</p>
             </div>
 
             <div className={styles.sliderContainer}>
@@ -59,30 +59,30 @@ const Ozzy = () => {
             <div className={styles.content}>
                 <section className={styles.rockSection}>
                     <h2 className={styles.sectionTitle}>
-                        <span className={styles.titleOutline}>OZZY</span>
-                        <span className={styles.titleMain}>EL PRÍNCIPE DE LAS TINIEBLAS</span>
+                        <span className={styles.titleOutline}>MAIDEN</span>
+                        <span className={styles.titleMain}>⚔️ LOS REYES DEL HEAVY METAL BRITÁNICO</span>
                     </h2>
                     <p className={styles.rockText}>
-                        <strong>John Michael Osbourne</strong>, conocido mundialmente como <strong>Ozzy Osbourne</strong>, nació el 3 de diciembre de 1948 en Birmingham, Inglaterra. Apodado el <em>"Príncipe de las Tinieblas"</em>, es una de las figuras más icónicas e influyentes del rock y el heavy metal.
+                        Fundada en 1975 en Leyton, Londres, por el bajista <strong>Steve Harris</strong>, <strong>Iron Maiden</strong> es considerada una de las bandas más influyentes de la historia del heavy metal. Con su mascota <em>Eddie</em> y su sonido épico e instrumental, conquistaron el mundo entero.
                     </p>
                     <p className={styles.rockText}>
-                        Comenzó su carrera como vocalista de <strong>Black Sabbath</strong> en 1968, banda con la que definió los cimientos del heavy metal. Tras su salida en 1979, inició una brillante carrera en solitario con álbumes legendarios como <em>"Blizzard of Ozz"</em> y <em>"Diary of a Madman"</em>.
+                        Álbumes como <em>"The Number of the Beast"</em>, <em>"Piece of Mind"</em> y <em>"Powerslave"</em> son obras maestras del género. Con más de 100 millones de discos vendidos y décadas de giras legendarias, Iron Maiden sigue siendo una fuerza imparable.
                     </p>
                 </section>
                 <div className={styles.officialLink}>
                     <p className={styles.linkText}>VISITA SU PÁGINA OFICIAL</p>
-                    <a href="https://www.ozzy.com/" target="_blank" rel="noreferrer" className={styles.ampButton}>
-                        🦇 ENTRA AL REINO OSCURO 🦇
+                    <a href="https://www.ironmaiden.com/" target="_blank" rel="noreferrer" className={styles.ampButton}>
+                        ⚔️ UP THE IRONS ⚔️
                     </a>
                 </div>
             </div>
 
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
-                    <p className={styles.copyright}>© {new Date().getFullYear()} R.A.V.V 🦇 OZZY OSBOURNE 🦇</p>
+                    <p className={styles.copyright}>© {new Date().getFullYear()} R.A.V.V 🔥 IRON MAIDEN 🔥</p>
                     <div className={styles.socialIcons}>
                         <span className={styles.icon}>🎸</span>
-                        <span className={styles.icon}>🦇</span>
+                        <span className={styles.icon}>⚔️</span>
                         <span className={styles.icon}>🤘</span>
                     </div>
                 </div>
@@ -91,4 +91,4 @@ const Ozzy = () => {
     );
 };
 
-export default Ozzy;
+export default IronMaiden;

@@ -1,0 +1,84 @@
+/* Define el estilo global para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif; /* Fuente general de la página */
+    text-align: center; /* Alinea el texto al centro */
+    margin: 0; /* Elimina los márgenes por defecto del cuerpo */
+    padding: 0; /* Elimina el padding por defecto del cuerpo */
+    background-image: url('https://p4.wallpaperbetter.com/wallpaper/241/1014/535/band-music-ac-dc-wallpaper-preview.jpg'); /* Imagen de fondo */
+    background-size: cover; /* Asegura que la imagen de fondo cubra toda el área visible */
+    background-position: center center; /* Centra la imagen de fondo */
+    background-attachment: fixed; /* Fija la imagen de fondo en su posición al hacer scroll */
+    color: #fff; /* Color del texto */
+}
+
+/* Estilos para el menú de navegación */
+nav {
+    background: linear-gradient(to bottom, #000000, #423b3a); /* Degradado de color de negro a gris oscuro */
+    color: #ffffff; /* Color del texto en el menú de navegación */
+    text-align: center; /* Alinea el texto al centro */
+    padding: 1em; /* Espaciado interno del menú de navegación */
+    margin: 0; /* Elimina el margen para que se quede pegado al borde superior */
+    position: fixed; /* Fija el menú de navegación en la parte superior */
+    top: 0; /* Alinea el menú de navegación en la parte superior */
+    width: 100%; /* Ancho completo de la ventana */
+    z-index: 1000; /* Asegura que el menú de navegación esté por encima de otros elementos */
+}
+
+nav a {
+    color: white; /* Color del texto en los enlaces de navegación */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    padding: 10px; /* Espaciado interno de los enlaces */
+    margin: 0 10px; /* Espaciado lateral entre los enlaces */
+    position: relative; /* Asegura que el emoticono se posicione correctamente */
+}
+
+nav a:first-child {
+    margin-left: 0; /* Elimina el margen izquierdo del primer enlace */
+}
+
+nav a:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último enlace */
+}
+
+/* Estilos para el header */
+header {
+    padding: 2em 0; /* Espaciado interno del header */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el header */
+    margin-top: 80px; /* Espacio adicional para separar el header del menú de navegación fijo */
+}
+
+/* Ajusta el espaciado del contenido debajo del header */
+section {
+    padding: 2em; /* Espaciado interno del contenido de la sección */
+    text-align: justify; /* Alinea el texto justificadamente */
+    margin-top: 0; /* Espacio adicional para separar el contenido del header */
+}
+
+footer {
+    background-color: #000000; /* Color de fondo del pie de página */
+    color: #fff; /* Color del texto en el pie de página */
+    text-align: center; /* Alinea el texto al centro */
+    padding: 0.5em; /* Espaciado interno reducido */
+    position: fixed; /* Fija el pie de página en la parte inferior de la ventana */
+    bottom: 0; /* Alinea el pie de página en la parte inferior */
+    width: 100%; /* Ancho completo de la ventana */
+    height: 35px; /* Altura fija del pie de página */
+    font-size: 12px; /* tamaño del texto */
+}
+
+/* Emoticones para cada enlace */
+.nav-item::after {
+    content: '⚡'; /* Emoticón general */
+    position: absolute; /* Posiciona el emoticono en relación al enlace */
+    right: -30px; /* Ajusta la posición horizontal del emoticono */
+    top: 50%; /* Ajusta la posición vertical del emoticono */
+    transform: translateY(-50%); /* Centra verticalmente el emoticono */
+    font-size: 1.5em; /* Tamaño del emoticono */
+    transition: opacity 0.3s ease; /* Transición suave para la opacidad del emoticono */
+    opacity: 0; /* El emoticono es invisible por defecto */
+}
+
+/* Mostrar el emoticono al pasar el cursor */
+.nav-item:hover::after {
+    opacity: 1; /* Hace visible el emoticono */
+}

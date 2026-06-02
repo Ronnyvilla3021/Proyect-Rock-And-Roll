@@ -1,0 +1,394 @@
+/* Estilos generales para toda la página */
+.page {
+    font-family: Arial, sans-serif; /* Fuente general */
+    margin: 0; /* Elimina márgenes del navegador */
+    padding: 0; /* Elimina padding del navegador */
+    background-color: #fff; /* Fondo blanco */
+    color: #000; /* Texto negro */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Direcciona los hijos en columna */
+    min-height: 100vh; /* Altura mínima de toda la pantalla */
+}
+
+/* Estilos para la sección del héroe principal */
+.heroSection {
+    display: flex; /* Flexbox para alinear contenido */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    min-height: 60vh; /* Altura mínima del 60% de la pantalla */
+    background: rgb(0, 0, 0); /* Color de fondo negro de reserva */
+    background-image: url('https://wallpapers.com/images/hd/rock-n-roll-k1enylutkroyr1xc.jpg'); /* Imagen de fondo */
+    background-repeat: no-repeat; /* No repetir la imagen */
+    background-size: contain; /* Ajustar tamaño de imagen dentro del contenedor */
+    background-position: left center; /* Posiciona la imagen a la izquierda y centrada verticalmente */
+    color: rgb(255, 255, 255); /* Texto blanco */
+    position: relative; /* Posición relativa para posicionamiento de elementos hijos */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+    padding-top: 80px; /* Espacio arriba */
+    margin-bottom: 2em; /* Espacio abajo */
+    justify-content: flex-end; /* Alinear el contenido hacia la derecha */
+    margin-top: 46px; /* Margen superior */
+}
+
+/* Contenedor del contenido de héroe */
+.heroContent {
+    text-align: center; /* Centra el texto */
+    background: rgba(73, 73, 73, 0.5); /* Fondo semi-transparente */
+    padding: 1.4em; /* Espaciado interno */
+    border-radius: 0.7em; /* Bordes redondeados */
+    width: 700px; /* Ancho fijo */
+    height: 210px; /* Altura fija */
+    margin-left: auto; /* Empuja hacia la derecha */
+    margin-right: 5vw; /* Margen derecho de 5% de la ventana */
+    align-items: center; /* Centrado de contenido (flex, aunque no está aplicado aquí) */
+    justify-content: center; /* Centrado horizontal (flex, aunque no está aplicado aquí) */
+}
+
+/* Estilo para el título h1 dentro de heroContent */
+.heroContent h1 {
+    font-size: 2.45em; /* Tamaño grande */
+    margin: 0 0 0.7em; /* Margen inferior */
+    text-align: center; /* Centrar texto */
+}
+
+/* Estilo para el párrafo dentro de heroContent */
+.heroContent p {
+    font-size: 1.54em; /* Tamaño mediano */
+    margin: 0 0 1.05em; /* Margen inferior */
+    text-align: center; /* Centrar texto */
+}
+
+/* Estilos para la barra de navegación principal */
+.mainNav {
+    display: flex; /* Flexbox para alinear items */
+    font-size: 1.3em; /* Tamaño de fuente base */
+    font-family: 'Metal Mania', cursive; /* Fuente específica para la navegación */
+    position: fixed; /* Fijar en la parte superior */
+    top: 0; /* Cero distancia desde arriba */
+    left: 0; /* Cero distancia desde la izquierda */
+    width: 100%; /* Ancho completo */
+    background: rgba(0, 0, 0, 0.9); /* Fondo negro semi-transparente */
+    z-index: 1000; /* Prioridad de superposición alta */
+    padding: 15px 0; /* Padding vertical */
+    justify-content: center; /* Centrar contenido */
+    align-items: center; /* Centrar verticalmente */
+}
+
+/* Estilo para la lista de bandas */
+.bandList {
+    list-style-type: none; /* Quitar viñetas */
+    padding: 0; /* Eliminar padding */
+    margin: 0; /* Eliminar margen */
+    justify-content: center; /* Centrar contenido (aunque faltaría display:flex para ser efectivo) */
+}
+
+/* Estilo para cada item de la lista */
+.bandList li {
+    display: inline; /* Mostrar en línea */
+    margin: 0 14px; /* Espaciado horizontal */
+}
+
+
+/* Elementos del menú - Botones de navegación */
+.navItem {
+    font-size: 1.3em;
+    font-family: 'New Rocker', cursive;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 10px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre los botones */
+.navItem:hover {
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffd700;
+}
+
+/* Estilo para el botón activo */
+.navActive {
+    color: #ff0000;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+/* Emoticones para cada enlace */
+.navItem::after {
+    content: '';
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+
+/* Emoticón para AC/DC */
+.acdc::after {
+    content: '⚡'; /* Rayo */
+}
+
+/* Emoticón para Ozzy Osbourne */
+.ozzy::after {
+    content: '🦇'; /* Murciélago */
+}
+
+/* Emoticón para Kiss */
+.kiss::after {
+    content: '💋'; /* Beso */
+}
+
+/* Emoticón para Iron Maiden */
+.ironMaiden::after {
+    content: '☠'; /* Calavera */
+}
+
+/* Emoticón para Black Sabbath */
+.blackSabbath::after {
+    content: '🤘'; /* Mano rockera */
+}
+
+/* Mostrar el emoticón al pasar el cursor */
+.navItem:hover::after {
+    opacity: 1; /* Hacer visible el emoticono */
+}
+
+/* Estilos para la sección de tarjetas */
+.cardSection {
+    display: grid; /* Usar grid layout */
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas iguales */
+    gap: 49px; /* Espacio entre tarjetas */
+    justify-content: center; /* Centrar contenido */
+    padding: 1.4em; /* Espaciado interno */
+    flex: 1; /* Ocupar espacio disponible */
+    align-items: center; /* Centrar verticalmente */
+    max-width: 840px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado horizontal */
+}
+
+/* Estilos individuales para cada tarjeta */
+.card {
+    --size: 210px; /* Variable de tamaño base */
+    width: var(--size); /* Ancho usando la variable */
+    aspect-ratio: 4 / 3; /* Relación de aspecto */
+    position: relative; /* Para posicionar elementos hijos */
+    border-radius: 1.4rem; /* Bordes redondeados */
+    overflow: hidden; /* Ocultar desbordes */
+    color: #000; /* Color de texto negro */
+    transform: translateZ(0); /* Optimización de renderizado */
+}
+
+/* Imagen dentro de la tarjeta */
+.card__img {
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    object-fit: cover; /* Cubrir contenedor */
+    transform: scale(calc(1 + (var(--hover, 0) * 0.25))) rotate(calc(var(--hover, 0) * -5deg)); /* Efecto de zoom y rotación al hover */
+    transition: transform 0.2s; /* Transición de transformación */
+}
+
+/* Pie de tarjeta */
+.card__footer {
+    padding: 0 1.05rem; /* Padding horizontal */
+    position: absolute; /* Posición absoluta en la tarjeta */
+    bottom: 0; /* Pegado abajo */
+    left: 0; /* Pegado a la izquierda */
+    width: 100%; /* Ancho completo */
+    background: hsl(0 0% 100% / 0.5); /* Fondo blanco semi-transparente */
+    backdrop-filter: blur(var(--blur)); /* Filtro de desenfoque */
+    height: 21%; /* Altura de pie de tarjeta */
+    align-content: center; /* Centrado vertical */
+}
+
+/* Botón de acción de la tarjeta */
+.card__action {
+    position: absolute; /* Posicionado sobre la tarjeta */
+    aspect-ratio: 1; /* Relación 1:1 (cuadrado) */
+    width: calc(var(--size) * 0.15); /* Tamaño proporcional */
+    bottom: 21%; /* Altura justo sobre el pie */
+    right: 1.05rem; /* Espacio a la derecha */
+    transform: translateY(50%) translateY(calc((var(--size) * 0.4))) translateY(calc(var(--hover, 0) * (var(--size) * -0.4))); /* Movimiento animado */
+    background: hsl(0 0% 100% / 0.5); /* Fondo blanco semi-transparente */
+    display: grid; /* Usar grid */
+    place-items: center; /* Centrar contenido */
+    border-radius: 0.35rem; /* Bordes redondeados */
+    transition: transform 0.2s; /* Suavizar la transformación */
+}
+
+/* Icono dentro del botón de acción */
+.card__action svg {
+    aspect-ratio: 1; /* Cuadrado */
+    width: 50%; /* Mitad del contenedor */
+}
+
+/* Texto principal del pie de tarjeta */
+.card__footer span:nth-of-type(1) {
+    font-size: calc(var(--size) * 0.0455); /* Tamaño proporcional */
+}
+
+/* Texto secundario del pie de tarjeta */
+.card__footer span:nth-of-type(2) {
+    font-size: calc(var(--size) * 0.0245); /* Tamaño proporcional más pequeño */
+}
+
+/* Efecto hover de la tarjeta */
+.card:is(:hover, :focus-visible) {
+    --hover: 1; /* Activar hover */
+}
+
+/* Estilos para el pie de página del sitio */
+.siteFooter {
+    background-color: #000000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Texto centrado */
+    padding: 0.07em 0; /* Padding vertical pequeño */
+    font-size: 1.33em; /* Tamaño de fuente */
+    width: 100%; /* Ancho completo */
+    position: relative; /* Relativo */
+    bottom: 0; /* Abajo */
+    margin-top: auto; /* Empujar al final */
+}
+
+/* Contenido interno del footer */
+.footerContent {
+    padding: 1em; /* Espaciado interno */
+}
+
+/* Estilos responsive para diferentes tamaños de pantalla */
+
+/* Tablet: hasta 1024px */
+@media (max-width: 1024px) {
+    .cardSection {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+        gap: 30px; /* Menos espacio */
+        max-width: 90%; /* Ancho del 90% */
+    }
+    
+    .heroContent {
+        width: 80%; /* Más estrecho */
+        margin-right: 2vw; /* Margen derecho */
+        padding: 3.5em;
+    }
+}
+
+/* Tablet/Phablet: hasta 768px */
+@media (max-width: 768px) {
+    .heroSection {
+        min-height: 50vh; /* Menor altura */
+        background-size: cover; /* Cubrir toda el área */
+        justify-content: center; /* Centrar contenido */
+    }
+    
+    .heroContent {
+        width: 90%; /* Más ancho relativo */
+        height: auto; /* Altura automática */
+        padding: 1em; /* Padding reducido */
+        margin: 0 auto; /* Centrado automático */
+        background: rgba(73, 73, 73, 0.7); /* Fondo más opaco */
+    }
+    
+    .heroContent h1 {
+        font-size: 1.8em; /* Tamaño menor */
+    }
+    
+    .heroContent p {
+        font-size: 1.1em; /* Tamaño menor */
+    }
+    
+    .cardSection {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+        gap: 20px; /* Menor separación */
+    }
+    
+    .card {
+        --size: 180px; /* Tamaño reducido */
+    }
+    
+    .mainNav {
+        padding: 10px 0; /* Padding más pequeño */
+    }
+    
+    .bandList li {
+        margin: 0 8px; /* Menor separación */
+    }
+    
+    .navItem {
+        font-size: 0.6em; /* Texto más pequeño */
+    }
+}
+
+/* Teléfonos pequeños: hasta 480px */
+@media (max-width: 480px) {
+    .heroSection {
+        min-height: 40vh; /* Menor altura */
+        padding-top: 60px; /* Menos espacio arriba */
+        margin-top: 40px; /* Menor margen superior */
+    }
+    
+    .heroContent h1 {
+        font-size: 1.5em; /* Texto más pequeño */
+    }
+    
+    .heroContent p {
+        font-size: 1em; /* Texto más pequeño */
+    }
+    
+    .cardSection {
+        grid-template-columns: 1fr; /* Una sola columna */
+        max-width: 90%; /* Ancho máximo del 90% */
+    }
+    
+    .card {
+        --size: 220px; /* Tamaño ajustado */
+        margin: 0 auto; /* Centrado */
+    }
+    
+    .mainNav {
+        font-size: 1em; /* Ajustar fuente */
+        padding: 8px 0; /* Padding reducido */
+    }
+    
+    .bandList {
+        display: flex; /* Flexbox */
+        flex-wrap: wrap; /* Permitir varias líneas */
+        justify-content: center; /* Centrar elementos */
+    }
+    
+    .bandList li {
+        margin: 5px 8px; /* Margen menor */
+    }
+    
+    .navItem {
+        font-size: 0.55em; /* Texto aún más pequeño */
+        padding: 5px; /* Padding reducido */
+    }
+    
+    /* Ocultar emoticones en móviles */
+    .navItem::after {
+        display: none; /* No mostrar */
+    }
+}
+
+/* Pantallas muy pequeñas: hasta 360px */
+@media (max-width: 360px) {
+    .heroContent {
+        padding: 0.8em; /* Padding reducido */
+    }
+    
+    .heroContent h1 {
+        font-size: 1.3em; /* Texto más pequeño */
+    }
+    
+    .card {
+        --size: 200px; /* Tamaño más reducido */
+    }
+    
+    .bandList li {
+        margin: 5px 6px; /* Menos margen */
+    }
+}

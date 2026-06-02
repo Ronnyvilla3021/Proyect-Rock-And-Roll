@@ -1,0 +1,450 @@
+/* Contenedor principal - Define el estilo general de toda la página */
+.rockContainer {
+    /* Fuente de letra estilo rock */
+    font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+    /* Imagen de fondo de una banda de rock */
+    background-image: url('https://p4.wallpaperbetter.com/wallpaper/241/1014/535/band-music-ac-dc-wallpaper-preview.jpg');
+    /* La imagen de fondo no se repite */
+    background-repeat: no-repeat;
+    /* La imagen cubre todo el espacio */
+    background-size: cover;
+    /* La imagen se centra */
+    background-position: center center;
+    /* La imagen queda fija al hacer scroll */
+    background-attachment: fixed;
+    /* Color del texto blanco */
+    color: #fff;
+    /* Posición relativa para otros elementos */
+    position: relative;
+    /* Organiza los elementos en columna */
+    display: flex;
+    flex-direction: column;
+    /* Ocupa al menos toda la altura de la pantalla */
+    min-height: 100vh;
+}
+
+/* Barra de navegación - Menú superior */
+.rockNav {
+    font-size: 0.8em;
+    font-family: 'Metal Mania', cursive;
+    background: linear-gradient(to bottom, #000000, #423b3a);
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Elementos del menú - Botones de navegación */
+.rockNavItem {
+    font-size: 1.3em;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 10px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre los botones */
+.rockNavItem:hover {
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffd700;
+}
+
+/* Estilo para el botón activo */
+.rockActive {
+    color: #ff0000;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+/* Emoticones para cada enlace */
+.rockNavItem::after {
+    content: '';
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* Emoticón para INICIO */
+.rockNavItem:nth-child(1):hover::after {
+    content: '🎸';
+    opacity: 1;
+}
+
+/* Emoticón para ACDC */
+.rockNavItem:nth-child(2):hover::after {
+    content: '⚡';
+    opacity: 1;
+}
+
+/* Emoticón para HISTORIA */
+.rockNavItem:nth-child(3):hover::after {
+    content: '📖';
+    opacity: 1;
+}
+
+/* Emoticón para ÁLBUMES */
+.rockNavItem:nth-child(4):hover::after {
+    content: '💿';
+    opacity: 1;
+}
+
+/* Emoticón para GRUPO */
+.rockNavItem:nth-child(5):hover::after {
+    content: '👥';
+    opacity: 1;
+}
+
+/* Encabezado principal - Parte superior de la página */
+.rockHeader {
+    /* Espacio interno (arriba 120px para no tapar el menú) */
+    padding: 50px 0 40px;
+    /* Fondo con imagen oscurecida */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://www.rockandblog.net/wp-content/uploads/2015/07/acdc-live.jpg');
+    /* La imagen cubre todo el espacio */
+    background-size: cover;
+    /* La imagen se centra */
+    background-position: center;
+    /* Texto centrado */
+    text-align: center;
+    /* Margen inferior */
+    margin-bottom: 30px;
+}
+
+/* Título principal */
+.rockTitle {
+    /* Tamaño grande */
+    font-size: 3rem;
+    /* Color dorado */
+    color: #ffd700;
+    /* Efectos de sombra */
+    text-shadow: 2px 2px 4px #000, 0 0 20px #ff0000;
+    /* Sin margen */
+    margin: 0;
+    /* Espacio interno */
+    padding: 20px;
+    /* Espacio entre letras */
+    letter-spacing: 3px;
+}
+
+/* Línea decorativa (como cuerdas de guitarra) */
+.guitarRiff {
+    /* Altura pequeña */
+    height: 5px;
+    /* Degradado de colores */
+    background: linear-gradient(to right, #ff0000, #ffd700, #ff0000);
+    /* Margen y centrado */
+    margin: 10px auto;
+    /* Ancho fijo */
+    width: 300px;
+    /* Sombra dorada */
+    box-shadow: 0 0 10px #ffd700;
+}
+
+/* Contenido principal - Donde va el contenido de la página */
+.rockContent {
+    /* Ocupa todo el espacio disponible */
+    flex: 1;
+    /* Espacio interno */
+    padding: 20px;
+    /* Ancho máximo */
+    max-width: 1200px;
+    /* Centrado */
+    margin: 0 auto;
+}
+
+/* Subtítulos */
+.rockSubtitle {
+    /* Tamaño grande */
+    font-size: 2rem;
+    /* Color dorado */
+    color: #ffd700;
+    /* Texto centrado */
+    text-align: center;
+    /* Margen inferior */
+    margin-bottom: 30px;
+    /* Sombra de texto */
+    text-shadow: 1px 1px 2px #000;
+    /* Borde inferior rojo */
+    border-bottom: 2px solid #ff0000;
+    /* Espacio inferior */
+    padding-bottom: 10px;
+    /* Para que el borde solo ocupe el ancho del texto */
+    display: inline-block;
+}
+
+/* Contenedor para videos */
+.rockVideoContainer {
+    /* Posición relativa para el video */
+    position: relative;
+    /* Mantiene proporción 16:9 */
+    padding-bottom: 56.25%;
+    /* Altura inicial */
+    height: 0;
+    /* Oculta lo que sobresalga */
+    overflow: hidden;
+    /* Margen inferior */
+    margin-bottom: 40px;
+    /* Borde gris */
+    border: 5px solid #333;
+    /* Sombra dorada */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Video dentro del contenedor */
+.rockVideo {
+    /* Posición absoluta dentro del contenedor */
+    position: absolute;
+    /* Pegado arriba */
+    top: 0;
+    /* Pegado a la izquierda */
+    left: 0;
+    /* Ancho completo */
+    width: 100%;
+    /* Altura completa */
+    height: 100%;
+}
+
+/* Cuadrícula de álbumes */
+.rockAlbumsGrid {
+    /* Muestra los elementos en cuadrícula */
+    display: grid;
+    /* Columnas que se ajustan al tamaño */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Espacio entre elementos */
+    gap: 30px;
+    /* Margen superior */
+    margin-top: 40px;
+}
+
+/* Tarjetas de álbumes */
+.rockAlbumCard {
+    /* Fondo oscuro */
+    background: #111;
+    /* Borde gris */
+    border: 1px solid #333;
+    /* Esquinas redondeadas */
+    border-radius: 5px;
+    /* Oculta lo que sobresalga */
+    overflow: hidden;
+    /* Animación suave */
+    transition: all 0.3s ease;
+    /* Posición relativa */
+    position: relative;
+    /* Sombra */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto al pasar el mouse sobre las tarjetas */
+.rockAlbumCard:hover {
+    /* Se mueve hacia arriba */
+    transform: translateY(-10px);
+    /* Sombra dorada */
+    box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
+    /* Borde dorado */
+    border-color: #ffd700;
+}
+
+/* Título del álbum en las tarjetas */
+.rockAlbumTitle {
+    /* Tamaño mediano */
+    font-size: 1.2rem;
+    /* Color blanco */
+    color: #fff;
+    /* Espacio interno */
+    padding: 15px;
+    /* Sin margen */
+    margin: 0;
+    /* Fondo degradado */
+    background: linear-gradient(to right, #333, #000);
+    /* Texto centrado */
+    text-align: center;
+}
+
+/* Información del álbum en las tarjetas */
+.rockAlbumInfo {
+    /* Espacio interno */
+    padding: 0 15px 15px;
+    /* Color gris claro */
+    color: #ccc;
+    /* Tamaño pequeño */
+    font-size: 0.9rem;
+    /* Texto centrado */
+    text-align: center;
+    /* Espacio entre líneas */
+    line-height: 1.4;
+}
+
+/* Imagen de la portada del álbum */
+.rockAlbumCover {
+    /* Ancho completo */
+    width: 100%;
+    /* Altura automática */
+    height: auto;
+    /* Mostrar como bloque */
+    display: block;
+    /* Borde superior gris */
+    border-top: 1px solid #333;
+}
+
+/* Capa que aparece al pasar el mouse */
+.rockAlbumOverlay {
+    /* Cubre toda la tarjeta */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Fondo oscuro semitransparente */
+    background: rgba(0, 0, 0, 0.7);
+    /* Centra el contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Inicialmente invisible */
+    opacity: 0;
+    /* Aparece suavemente */
+    transition: opacity 0.3s ease;
+    /* Tamaño grande */
+    font-size: 3rem;
+    /* Color rojo */
+    color: #ff0000;
+}
+
+/* Muestra la capa al pasar el mouse */
+.rockAlbumCard:hover .rockAlbumOverlay {
+    /* Hace visible la capa */
+    opacity: 1;
+}
+
+/* Pie de página - Parte inferior */
+.rockFooter {
+    /* Fondo degradado */
+    background: linear-gradient(to top, #000000, #333333);
+    /* Color del texto blanco */
+    color: #fff;
+    /* Texto centrado */
+    text-align: center;
+    /* Espacio interno */
+    padding: 15px 15px 5px;
+    /* Ancho completo */
+    width: 100%;
+    /* Borde superior dorado */
+    border-top: 1px solid #ffd700;
+    /* Posición relativa */
+    position: relative;
+    /* Para que aparezca por encima */
+    z-index: 10;
+    /* Se coloca al final */
+    margin-top: auto;
+    /* Oculta lo que sobresalga */
+    overflow: hidden;
+}
+
+/* Añade el emoticón cuando el mouse pasa sobre los enlaces */
+.rockNavItem:hover::after {
+    content: ' ⚡';
+    display: inline-block;
+    margin-left: 5px;
+    animation: lightning 0.3s;
+}
+
+/* Versión mejorada del pie de página */
+.rockFooter {
+    /* Fondo semitransparente */
+    background: rgba(0, 0, 0, 0.85);
+    /* Efecto de desenfoque */
+    backdrop-filter: blur(2px);
+    /* Sombra superior */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Texto del pie de página */
+.rockFooterText {
+    /* Sin margen */
+    margin: 0;
+    /* Tamaño pequeño */
+    font-size: 0.9rem;
+    /* Espacio entre letras */
+    letter-spacing: 1px;
+    /* Sombra de texto */
+    text-shadow: 1px 1px 3px #000;
+    /* Posición relativa */
+    position: relative;
+    /* Sin espacio inferior */
+    padding-bottom: 0;
+}
+
+/* Línea decorativa (como cuerdas de guitarra) */
+.rockGuitarStrings {
+    /* Altura muy pequeña */
+    height: 2px;
+    /* Patrón de rayas doradas */
+    background: repeating-linear-gradient(to right,
+            #ffd700, #ffd700 1px,
+            transparent 1px, transparent 3px);
+    /* Margen y centrado */
+    margin: 8px auto 0;
+    /* Ancho del 80% */
+    width: 80%;
+    /* Sin bordes */
+    border: none;
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+
+    /* Título más pequeño */
+    .rockTitle {
+        font-size: 2rem;
+    }
+
+    /* Subtítulo más pequeño */
+    .rockSubtitle {
+        font-size: 1.5rem;
+    }
+
+    /* Menos columnas en la cuadrícula */
+    .rockAlbumsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+/* Pequeña animación para el efecto */
+@keyframes lightning {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Estilos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+
+    /* Botones de navegación más pequeños */
+    .rockNavItem {
+        padding: 5px;
+        font-size: 0.8rem;
+    }
+
+    /* Título más pequeño */
+    .rockTitle {
+        font-size: 1.5rem;
+    }
+
+    /* Una sola columna en la cuadrícula */
+    .rockAlbumsGrid {
+        grid-template-columns: 1fr;
+    }
+}

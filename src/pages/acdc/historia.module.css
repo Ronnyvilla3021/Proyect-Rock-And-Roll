@@ -24,20 +24,28 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     padding: 15px;
-    background: rgba(0,0,0,0.8);
+
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+
+    border-bottom: 2px solid #ff0000;
     z-index: 1000;
 }
 
 .link {
-    color: white;
+    color: #aaa;
     text-decoration: none;
+    font-weight: 700;
+}
+
+.link:hover {
+    color: #ffcc00;
 }
 
 .active {
-    color: red;
-    text-shadow: 0 0 10px red;
+    color: #ff0000;
 }
 
 /* HEADER */

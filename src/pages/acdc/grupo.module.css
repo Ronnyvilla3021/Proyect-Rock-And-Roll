@@ -30,31 +30,31 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
-
     display: flex;
     justify-content: center;
-    gap: 15px;
-
+    gap: 20px;
     padding: 15px;
 
-    background: #000;
-    border-bottom: 2px solid red;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+
+    border-bottom: 2px solid #ff0000;
+    z-index: 1000;
 }
 
 .link {
     color: #aaa;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
+    transition: 0.3s;
 }
 
 .link:hover {
-    color: yellow;
-    text-shadow: 0 0 10px red;
+    color: #ffcc00;
 }
 
 .active {
-    color: red;
+    color: #ff0000;
 }
 
 /* HEADER */

@@ -102,6 +102,22 @@ const ACDC = () => {
                 </div>
             </section>
 
+            {/* OFFICIAL BUTTON */}
+<div className={styles.officialSection}>
+    <p className={styles.officialText}>
+        VISITA LA PÁGINA OFICIAL DE LA BANDA
+    </p>
+
+    <a
+        href="https://www.acdc.com"
+        target="_blank"
+        rel="noreferrer"
+        className={styles.officialButton}
+    >
+        ⚡ ENTRAR A AC/DC ⚡
+    </a>
+</div>
+
             <footer className={styles.footer}>
                 © {new Date().getFullYear()} AC/DC EXPERIENCE
             </footer>

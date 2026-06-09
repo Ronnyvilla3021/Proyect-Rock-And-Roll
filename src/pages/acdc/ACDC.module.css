@@ -57,10 +57,12 @@
     justify-content: center;
     gap: 20px;
     padding: 15px;
+
     background: rgba(0,0,0,0.7);
     backdrop-filter: blur(10px);
+
     border-bottom: 2px solid #ff0000;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .link {
@@ -69,8 +71,12 @@
     font-weight: 700;
 }
 
+.link:hover {
+    color: #ffcc00;
+}
+
 .active {
-    color: red;
+    color: #ff0000;
 }
 
 /* HERO */
@@ -190,4 +196,37 @@
     padding: 20px;
     border-top: 1px solid #222;
     color: #666;
+}
+
+/* OFFICIAL SITE BUTTON */
+.officialSection{
+    text-align:center;
+    margin:80px auto 40px;
+}
+
+.officialText{
+    color:#aaa;
+    font-weight:700;
+    margin-bottom:15px;
+    letter-spacing:2px;
+}
+
+.officialButton{
+    display:inline-block;
+    padding:14px 28px;
+    border:2px solid red;
+    color:white;
+    text-decoration:none;
+    font-weight:900;
+    letter-spacing:2px;
+    background:rgba(0,0,0,0.6);
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(255,0,0,0.2);
+}
+
+.officialButton:hover{
+    transform:scale(1.08);
+    background:red;
+    color:black;
+    box-shadow:0 0 25px red;
 }

@@ -1,10 +1,16 @@
-*{margin:0;padding:0;box-sizing:border-box;}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 .queenPage {
     font-family: 'Georgia', serif;
+    /* Cargamos la ruta directamente desde CSS para que Webpack la resuelva correctamente */
     background:
-        radial-gradient(circle at top, rgba(212,175,55,.2), transparent 35%),
-        linear-gradient(180deg, #000, #0a0800, #120a00, #000);
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.25), transparent 45%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.85), rgba(10, 8, 0, 0.92), rgba(0, 0, 0, 0.85)),
+        url('../../images/queen/portada4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Mantiene el fondo estático al hacer scroll */
     color: white;
     min-height: 100vh;
     position: relative;
@@ -96,52 +102,66 @@
 
 @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.04); } }
 
-.sliderContainer {
+/* ==========================================================================
+   PANTALLA TIPO ESCENARIO
+   ========================================================================== */
+.stageDisplayContainer {
     max-width: 800px;
+    height: 450px; 
     margin: 40px auto;
-    position: relative;
     border: 10px solid #0d0900;
     border-radius: 5px;
-    box-shadow: 0 0 30px rgba(212,175,55,0.5), inset 0 0 20px rgba(0,0,0,0.8);
+    box-shadow: 0 0 30px rgba(212,175,55,0.5);
+    position: relative;
     overflow: hidden;
     z-index: 1;
 }
 
-.sliderWrapper { display: flex; transition: transform 0.5s cubic-bezier(0.25,0.1,0.25,1); }
-.slideAnimation { animation: slideFlash 0.5s; }
-@keyframes slideFlash { 0% { opacity: 0.5; } 100% { opacity: 1; } }
-.sliderItem { width: 100%; height: auto; flex-shrink: 0; display: block; }
-
-.prevButton, .nextButton {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: rgba(0,0,0,0.7);
-    border: 2px solid #d4af37;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.stageDisplay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
 }
 
-.prevButton:hover, .nextButton:hover { background: #d4af37; color: black; transform: translateY(-50%) scale(1.1); }
-.prevButton { left: 20px; }
-.nextButton { right: 20px; }
+.stageSlide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 1.5s ease-in-out, transform 5.5s linear;
+}
 
-.slideIndicator { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
-.indicatorDot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s ease; }
-.activeDot { background: #d4af37; transform: scale(1.3); }
+.stageActive {
+    opacity: 0.85; 
+    transform: scale(1.08);
+}
 
+.stageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 70%, rgba(0,0,0,0.8) 100%),
+                radial-gradient(circle, transparent 30%, rgba(0,0,0,0.5) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   RESTO DE SECCIONES PRESERVADO
+   ========================================================================== */
 .content { max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
 
 .rockSection {
-    background: rgba(212,175,55,0.05);
+    background: rgba(0, 0, 0, 0.6); /* Transparencia para destacar sobre portada4 */
     backdrop-filter: blur(12px);
     padding: 30px;
     border-left: 5px solid rgba(212,175,55,0.4);
@@ -157,7 +177,7 @@
 .rockText strong { color: #ffd700; }
 .rockText em { color: #d4af37; font-style: italic; }
 
-.officialLink { text-align: center; margin: 50px 0; }
+.officialLink { text-align: center; margin: 20px 0 50px 0; }
 .linkText { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; color: #ffd700; }
 
 .ampButton {
@@ -185,18 +205,54 @@
 .icon { font-size: 1.5rem; transition: all 0.3s ease; }
 .icon:hover { transform: scale(1.3); }
 
-.membersGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; margin-top: 20px; }
-.memberCard { background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 20px; overflow: hidden; text-align: center; transition: all 0.3s ease; padding-bottom: 15px; }
-.memberCard:hover { transform: translateY(-8px); box-shadow: 0 0 25px rgba(212,175,55,0.3); border-color: rgba(212,175,55,0.5); }
-.memberImg { width: 100%; height: 200px; object-fit: cover; object-position: top; }
-.memberName { font-size: 1rem; color: #ffd700; margin: 10px 5px 5px; }
-.memberRole { font-size: 0.85rem; color: #fff; margin: 0 5px; }
-.memberYears { font-size: 0.75rem; color: #aaa; margin: 5px; }
-.pastMembersList { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-.pastMemberItem { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 10px 15px; background: rgba(212,175,55,0.05); border-left: 3px solid #d4af37; border-radius: 0 5px 5px 0; }
-.pastMemberName { font-size: 1rem; color: #ffd700; font-weight: bold; min-width: 180px; }
-.pastMemberRole { font-size: 0.9rem; color: #ccc; flex: 1; }
-.pastMemberNote { font-size: 0.8rem; color: #ff6b6b; font-style: italic; }
+/* ==========================================================================
+   Corona de CSS Puro 
+   ========================================================================== */
+.crownWrapper {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    margin: 0 auto 20px auto;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7));
+    animation: float 4s ease-in-out infinite;
+    z-index: 2;
+}
 
-@media (max-width: 768px) { .logo { font-size: 3.5rem; } .logoSub { font-size: 1.5rem; } .tagline { font-size: 1.2rem; } .sliderContainer { max-width: 95%; } }
-@media (max-width: 480px) { .navItem { font-size: 0.9rem; padding: 8px 10px; } .logo { font-size: 2.5rem; } .prevButton, .nextButton { width: 40px; height: 40px; font-size: 1.2rem; } }
+.crown {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #b8860b, #ffd700, #d4af37);
+    clip-path: polygon(0% 100%, 100% 100%, 92% 35%, 75% 70%, 50% 10%, 25% 70%, 8% 35%);
+    position: relative;
+}
+
+.crownWrapper::before,
+.crownWrapper::after,
+.crown::before {
+    content: '';
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #ffffff, 0 0 4px #ffd700;
+}
+
+.crownWrapper::before { width: 8px; height: 8px; top: 31%; left: 5%; }
+.crown::before { width: 10px; height: 10px; top: 3%; left: 50%; transform: translateX(-50%); }
+.crownWrapper::after { width: 8px; height: 8px; top: 31%; right: 5%; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 768px) { 
+    .logo { font-size: 3.5rem; } 
+    .logoSub { font-size: 1.5rem; } 
+    .tagline { font-size: 1.2rem; } 
+    .stageDisplayContainer { max-width: 95%; height: 320px; } 
+}
+@media (max-width: 480px) { 
+    .navItem { font-size: 0.9rem; padding: 8px 10px; } 
+    .logo { font-size: 2.5rem; } 
+    .stageDisplayContainer { height: 240px; }
+}

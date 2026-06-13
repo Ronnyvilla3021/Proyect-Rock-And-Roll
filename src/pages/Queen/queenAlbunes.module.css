@@ -1,101 +1,449 @@
-.rockContainer {
-    font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
-    background-image: url('https://wallpapercave.com/wp/wp1816521.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    color: #fff;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.rockNav {
-    font-size: 0.8em;
-    background: linear-gradient(to bottom, #000000, #0d0900);
-    color: #ffffff;
-    text-align: center;
-    padding: 15px 0;
+* {
     margin: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(212,175,55,0.5);
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.rockNavItem {
-    font-size: 1.3em;
+.queenPage {
+    font-family: 'Georgia', serif;
+    background:
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.25), transparent 45%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.85), rgba(10, 8, 0, 0.92), rgba(0, 0, 0, 0.85)),
+        url('../../images/queen/portada4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: white;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.queenPage::before {
+    content: "";
+    position: fixed;
+    top: 60px;
+    right: 100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffd700, #b8860b);
+    opacity: .15;
+    box-shadow: 0 0 80px rgba(212, 175, 55, 0.6);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.queenNav {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(to right, #000, #0d0900, #000);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+}
+
+.navContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navItem {
+    color: #cfcfcf;
     text-decoration: none;
-    padding: 10px;
-    margin: 0 10px;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    margin: 0 5px;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+    font-weight: 700;
 }
 
-.rockNavItem:hover { color: #ffd700; text-shadow: 0 0 10px #d4af37; }
-.rockActive { color: #d4af37; text-shadow: 0 0 10px #d4af37; }
-
-.rockHeader {
-    padding: 50px 0 40px;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
-    text-align: center;
-    margin-bottom: 30px;
-    margin-top: 55px;
+.navItem:hover {
+    color: white;
+    text-shadow: 0 0 10px #d4af37;
 }
 
-.rockTitle {
-    font-size: 3rem;
+.navDivider {
+    color: #d4af37;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.queenActive {
     color: #ffd700;
-    text-shadow: 2px 2px 4px #000, 0 0 20px #d4af37;
-    margin: 0;
+    text-shadow: 0 0 10px #d4af37;
+}
+
+.logoContainer {
+    text-align: center;
+    margin: 100px 0 20px;
     padding: 20px;
-    letter-spacing: 3px;
+    position: relative;
+    z-index: 1;
 }
 
-.guitarRiff {
-    height: 5px;
-    background: linear-gradient(to right, #d4af37, #ffd700, #d4af37);
-    margin: 10px auto;
-    width: 300px;
-    box-shadow: 0 0 10px #d4af37;
+.logo {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 15px #d4af37, 0 0 35px #d4af37, 0 0 80px #b8860b;
+    letter-spacing: 5px;
+    margin: 0;
+    display: block;
+    animation: pulse 2s infinite alternate;
+    line-height: 1;
 }
 
-.rockContent { flex: 1; padding: 20px; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; }
-
-.rockSubtitle {
-    font-size: 2rem;
+.tagline {
+    font-size: 1.2rem;
     color: #ffd700;
-    text-align: center;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 2px #000;
-    border-bottom: 2px solid #d4af37;
-    padding-bottom: 10px;
-    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-top: 8px;
+    font-style: italic;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
 }
 
-.rockVideoContainer { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 40px; border: 5px solid #333; box-shadow: 0 0 20px rgba(212,175,55,0.5); }
-.rockVideo { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.03); }
+}
 
-.rockAlbumsGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+.content {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
 
-.rockAlbumCard { background: #111; border: 1px solid #333; border-radius: 5px; overflow: hidden; transition: all 0.3s ease; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.5); cursor: pointer; }
-.rockAlbumCard:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(212,175,55,0.3); border-color: #d4af37; }
+/* --- SLIDER DE CORONAS --- */
+.crownSelectorContainer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 15px 20px;
+    margin-bottom: 35px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
 
-.rockAlbumTitle { font-size: 1.2rem; color: #fff; padding: 15px; margin: 0; background: linear-gradient(to right, #0d0900, #000); text-align: center; }
-.rockAlbumInfo { padding: 0 15px 15px; color: #ccc; font-size: 0.9rem; text-align: center; line-height: 1.4; }
-.rockAlbumCover { width: 100%; height: auto; display: block; border-top: 1px solid #333; }
+.crownSelector {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 5px;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 #111;
+    align-items: flex-end;
+}
 
-.rockAlbumOverlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; font-size: 3rem; color: #d4af37; }
-.rockAlbumCard:hover .rockAlbumOverlay { opacity: 1; }
+.crownSelector::-webkit-scrollbar { height: 6px; }
+.crownSelector::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+.crownSelector::-webkit-scrollbar-track { background: #111; }
 
-.rockFooter { background: rgba(0,0,0,0.85); color: #fff; text-align: center; padding: 15px 15px 5px; width: 100%; border-top: 1px solid #d4af37; margin-top: auto; }
-.rockFooterText { margin: 0; font-size: 0.9rem; letter-spacing: 1px; }
+.crownWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    min-width: 110px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+    opacity: 0.5;
+    filter: grayscale(40%);
+}
 
-@media (max-width: 768px) { .rockTitle { font-size: 2rem; } .rockAlbumsGrid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); } }
-@media (max-width: 480px) { .rockNavItem { padding: 5px; font-size: 0.8rem; } .rockTitle { font-size: 1.5rem; } .rockAlbumsGrid { grid-template-columns: 1fr; } }
+.crownIcon {
+    font-size: 3.2rem;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+}
+
+.crownLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.crownYear {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.crownName {
+    font-size: 0.8rem;
+    color: #aaa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.crownWrapper:hover {
+    opacity: 0.85;
+    transform: translateY(-5px);
+    filter: grayscale(0%);
+}
+.crownWrapper:hover .crownIcon { transform: scale(1.1); }
+
+.activeCrownWrapper {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: translateY(-10px) scale(1.05);
+}
+
+.activeCrownWrapper .crownIcon {
+    text-shadow: 0 0 20px #ffd700, 0 0 40px #b8860b;
+    transform: scale(1.15);
+}
+
+.activeCrownWrapper .crownYear {
+    color: #ffd700;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+.activeCrownWrapper .crownName {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* --- ESTRUCTURA DEL LIBRO ANCHO --- */
+.bookWrapper {
+    display: flex;
+    justify-content: center;
+    perspective: 1500px;
+}
+
+.mainBook {
+    display: flex;
+    width: 100%;
+    max-width: 1150px;
+    min-height: 460px; /* Un poco más de alto para acompañar la pantalla horizontal */
+    background: #111;
+    border-radius: 12px;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.9), 
+        0 0 0 10px #080601, 
+        0 0 25px rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    overflow: hidden;
+}
+
+/* PÁGINA IZQUIERDA (Estructura Vertical de Contenido) */
+.bookLeftPage {
+    flex: 0.4; /* Proporción para la ficha del disco */
+    background: linear-gradient(135deg, #0f0f0f, #070707);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
+    position: relative;
+    border-right: 4px solid #000;
+}
+
+.leftContentLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    gap: 25px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.coverWrapper {
+    width: 100%;
+    max-width: 210px;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    box-shadow: 5px 15px 30px rgba(0,0,0,0.85);
+    border-radius: 6px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.bookCoverImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.infoBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bookAlbumTitle {
+    font-size: 1.8rem;
+    color: #ffd700;
+    font-family: 'Georgia', serif;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    margin: 0;
+}
+
+.bookDivider {
+    width: 60px;
+    height: 3px;
+    background-color: #d4af37;
+    margin: 12px 0;
+    border-radius: 2px;
+}
+
+.bookAlbumInfo {
+    color: #e0e0e0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.bookAlbumInfo strong {
+    color: #b8860b;
+}
+
+.pageShadowLeft {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(0,0,0,0.85), transparent);
+    pointer-events: none;
+}
+
+/* PÁGINA DERECHA (Gran Pantalla Horizontal) */
+.bookRightPage {
+    flex: 0.6; /* Mayor espacio para maximizar el reproductor */
+    background: linear-gradient(135deg, #141414, #0f0f0f);
+    padding: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageShadowRight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.85), transparent);
+    pointer-events: none;
+}
+
+.videoBlockFull {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* REPRODUCTOR DE VIDEO MAXIMIZADO (Formato Cine Horizontal) */
+.embeddedVideoContainer {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 perfecta */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 4px solid #050505;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.9), 
+        0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.embeddedVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Footer */
+.footer { 
+    background: linear-gradient(to right, #000, #0d0900, #000); 
+    padding: 20px 0; 
+    border-top: 3px solid #d4af37; 
+    margin-top: 50px; 
+    position: relative; 
+    z-index: 1; 
+}
+
+.footerContent { 
+    max-width: 900px; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    padding: 0 20px; 
+}
+
+.copyright { font-size: 0.9rem; color: #aaa; }
+.socialIcons { display: flex; gap: 15px; }
+.icon { font-size: 1.5rem; transition: all 0.3s ease; }
+.icon:hover { transform: scale(1.3); }
+
+/* --- AJUSTES RESPONSIVOS --- */
+@media (max-width: 880px) { 
+    .mainBook {
+        flex-direction: column;
+        max-width: 500px;
+        min-height: auto;
+    }
+    
+    .bookLeftPage {
+        flex: 1;
+        border-right: none;
+        border-bottom: 4px solid #000;
+        padding: 40px 20px;
+    }
+    
+    .pageShadowLeft {
+        width: 100%; height: 40px; bottom: 0; top: auto;
+        background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    }
+
+    .pageShadowRight {
+        width: 100%; height: 40px;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
+    }
+    
+    .bookRightPage {
+        flex: 1;
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 480px) { 
+    .navItem { font-size: 0.9rem; padding: 8px 10px; } 
+    .logo { font-size: 2.3rem; } 
+    .crownIcon { font-size: 2.6rem; }
+    .crownWrapper { min-width: 90px; }
+    .bookAlbumTitle { font-size: 1.5rem; }
+}

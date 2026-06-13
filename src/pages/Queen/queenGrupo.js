@@ -1,18 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './queen.module.css';
+import styles from './queenGrupo.module.css';
+
+// Importación de tus imágenes locales según tu árbol de directorios
+import imgFreddie from '../../images/queen/freddiemercury.jpg';
+import imgBrian from '../../images/queen/brianmay.jpg';
+import imgRoger from '../../images/queen/rogertaylor.jpg';
+import imgDeacon from '../../images/queen/jhondeacon.jpg'; // Respetando tu escritura 'jhon'
 
 const QueenGrupo = () => {
-    const currentMembers = [
-        { name: "Brian May", role: "Guitarra, Coros", years: "1970–presente", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Brian_May_-_2012.jpg/440px-Brian_May_-_2012.jpg" },
-        { name: "Roger Taylor", role: "Batería, Coros", years: "1970–presente", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Roger_Taylor_2010.jpg/440px-Roger_Taylor_2010.jpg" },
-        { name: "Adam Lambert", role: "Vocalista (giras)", years: "2011–presente", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Adam_Lambert_2019.jpg/440px-Adam_Lambert_2019.jpg" },
-    ];
-
-    const pastMembers = [
-        { name: "Freddie Mercury †", role: "Vocalista, Piano (1970–1991)", note: "Fallecido en 1991" },
-        { name: "John Deacon", role: "Bajo (1971–1997)" },
-        { name: "Paul Rodgers", role: "Vocalista (2004–2009)" },
+    const bandMembers = [
+        { 
+            name: "FREDDIE MERCURY †", 
+            role: "Vocalista, Piano (1970–1991)", 
+            years: "Fallecido en 1991", 
+            bio: "Leyenda e icono mundial, poseedor de una de las voces más potentes y versátiles de la historia del rock.",
+            img: imgFreddie
+        },
+        { 
+            name: "BRIAN MAY", 
+            role: "Guitarra, Coros", 
+            years: "1970–presente", 
+            bio: "Compositor brillante y astrofísico, creador del inconfundible sonido de la guitarra 'Red Special'.",
+            img: imgBrian
+        },
+        { 
+            name: "ROGER TAYLOR", 
+            role: "Batería, Coros", 
+            years: "1970–presente", 
+            bio: "Poderoso motor rítmico de la banda y compositor de grandes éxitos globales de Queen.",
+            img: imgRoger
+        },
+        { 
+            name: "JOHN DEACON", 
+            role: "Bajo (1971–1997)", 
+            years: "Retirado en 1997", 
+            bio: "El arquitecto silencioso de las líneas de bajo más icónicas y reconocibles del mundo.",
+            img: imgDeacon
+        },
     ];
 
     return (
@@ -36,39 +61,27 @@ const QueenGrupo = () => {
                 <p className={styles.tagline}>LOS REYES DE LA MÚSICA</p>
             </div>
 
-            <div className={styles.content}>
-                <section className={styles.rockSection}>
-                    <h2 className={styles.sectionTitle}>
-                        <span className={styles.titleOutline}>BAND</span>
-                        <span className={styles.titleMain}>👑 MIEMBROS ACTUALES 👑</span>
-                    </h2>
-                    <div className={styles.membersGrid}>
-                        {currentMembers.map((m) => (
-                            <div key={m.name} className={styles.memberCard}>
-                                <img src={m.img} alt={m.name} className={styles.memberImg} />
-                                <h3 className={styles.memberName}>{m.name}</h3>
-                                <p className={styles.memberRole}>{m.role}</p>
-                                <p className={styles.memberYears}>{m.years}</p>
-                            </div>
-                        ))}
+            {/* Contenedor principal de las cartas gigantes estilo póster */}
+            <div className={styles.posterContainer}>
+                {bandMembers.map((member) => (
+                    <div key={member.name} className={styles.posterCard}>
+                        {/* Imagen de fondo local */}
+                        <div 
+                            className={styles.posterImg} 
+                            style={{ backgroundImage: `url(${member.img})` }}
+                        />
+                        {/* Gradiente dorado oscuro superpuesto inferior */}
+                        <div className={styles.posterOverlay} />
+                        
+                        {/* Textos de la tarjeta */}
+                        <div className={styles.posterInfo}>
+                            <h2 className={styles.posterName}>{member.name}</h2>
+                            <p className={styles.posterRole}>{member.role}</p>
+                            <p className={styles.posterYears}>{member.years}</p>
+                            <p className={styles.posterBio}>{member.bio}</p>
+                        </div>
                     </div>
-                </section>
-
-                <section className={styles.rockSection}>
-                    <h2 className={styles.sectionTitle}>
-                        <span className={styles.titleOutline}>PAST</span>
-                        <span className={styles.titleMain}>🎸 MIEMBROS ANTERIORES 🎸</span>
-                    </h2>
-                    <div className={styles.pastMembersList}>
-                        {pastMembers.map((m) => (
-                            <div key={m.name} className={styles.pastMemberItem}>
-                                <span className={styles.pastMemberName}>{m.name}</span>
-                                <span className={styles.pastMemberRole}>{m.role}</span>
-                                {m.note && <span className={styles.pastMemberNote}>{m.note}</span>}
-                            </div>
-                        ))}
-                    </div>
-                </section>
+                ))}
             </div>
 
             <footer className={styles.footer}>

@@ -2,25 +2,22 @@ import React, { useState, useEffect } from 'react';
 import styles from './queen.module.css';
 import { Link } from 'react-router-dom';
 
+// Importación de tus imágenes locales desde la carpeta images/queen
+import portada1 from '../../images/queen/portada.jpg';
+import portada2 from '../../images/queen/portada2.jpg';
+import portada3 from '../../images/queen/portada3.jpg';
+
 const Queen = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isAnimated, setIsAnimated] = useState(false);
-    const totalSlides = 3;
+    const images = [portada1, portada2, portada3];
 
     useEffect(() => {
-        setIsAnimated(true);
-        const timer = setTimeout(() => setIsAnimated(false), 1000);
-        return () => clearTimeout(timer);
-    }, [currentIndex]);
-
-    const prevSlide = () => setCurrentIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-    const nextSlide = () => setCurrentIndex((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
-
-    const images = [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Queen_-_Bohemian_Rhapsody_filming_-_1975.png/1200px-Queen_-_Bohemian_Rhapsody_filming_-_1975.png",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Queen_at_the_Manor_Studio%2C_1975.jpg/1200px-Queen_at_the_Manor_Studio%2C_1975.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Queen_Crowd_at_Wembley.jpg/1200px-Queen_Crowd_at_Wembley.jpg",
-    ];
+        // Transición automática cada 5 segundos (sincronizada con el CSS)
+        const timer = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [images.length]);
 
     return (
         <div className={styles.queenPage}>
@@ -39,25 +36,41 @@ const Queen = () => {
             </nav>
 
             <div className={styles.logoContainer}>
+                {/* Corona de CSS Puro Integrada */}
+                <div className={styles.crownWrapper}>
+                    <div className={styles.crown}></div>
+                </div>
+
                 <h1 className={styles.logo}>QUEEN</h1>
                 <span className={styles.logoSub}>WE ARE THE CHAMPIONS</span>
                 <p className={styles.tagline}>THE GREATEST ROCK BAND OF ALL TIME</p>
             </div>
 
-            <div className={styles.sliderContainer}>
-                <div className={`${styles.sliderWrapper} ${isAnimated ? styles.slideAnimation : ''}`}>
-                    <img className={styles.sliderItem} src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} />
-                </div>
-                <button className={styles.prevButton} onClick={prevSlide}><span>❮</span></button>
-                <button className={styles.nextButton} onClick={nextSlide}><span>❯</span></button>
-                <div className={styles.slideIndicator}>
-                    {Array.from({ length: totalSlides }).map((_, i) => (
-                        <span key={i} className={`${styles.indicatorDot} ${i === currentIndex ? styles.activeDot : ''}`} onClick={() => setCurrentIndex(i)} />
+            {/* PANTALLA TIPO ESCENARIO (Slideshow Automatizado con Zoom y Desvanecimiento) */}
+            <div className={styles.stageDisplayContainer}>
+                <div className={styles.stageDisplay}>
+                    {images.map((image, index) => (
+                        <div
+                            key={index}
+                            className={`${styles.stageSlide} ${
+                                index === currentIndex ? styles.stageActive : ''
+                            }`}
+                            style={{ backgroundImage: `url(${image})` }}
+                        />
                     ))}
+                    {/* Capa de atmósfera para simular iluminación de concierto */}
+                    <div className={styles.stageOverlay}></div>
                 </div>
             </div>
 
             <div className={styles.content}>
+                <div className={styles.officialLink}>
+                    <p className={styles.linkText}>VISITA SU PÁGINA OFICIAL</p>
+                    <a href="https://www.queenonline.com/es" target="_blank" rel="noreferrer" className={styles.ampButton}>
+                        👑 ENTRA AL REINO DE QUEEN 👑
+                    </a>
+                </div>
+
                 <section className={styles.rockSection}>
                     <h2 className={styles.sectionTitle}>
                         <span className={styles.titleOutline}>QUEEN</span>
@@ -70,12 +83,6 @@ const Queen = () => {
                         Con himnos eternos como <em>"Bohemian Rhapsody"</em>, <em>"We Will Rock You"</em>, <em>"We Are the Champions"</em> y <em>"Don't Stop Me Now"</em>, Queen conquistó el mundo entero. Su actuación en <strong>Live Aid 1985</strong> es considerada la mejor actuación en vivo de la historia del rock.
                     </p>
                 </section>
-                <div className={styles.officialLink}>
-                    <p className={styles.linkText}>VISITA SU PÁGINA OFICIAL</p>
-                    <a href="https://www.queenonline.com/" target="_blank" rel="noreferrer" className={styles.ampButton}>
-                        👑 ENTRA AL REINO DE QUEEN 👑
-                    </a>
-                </div>
             </div>
 
             <footer className={styles.footer}>

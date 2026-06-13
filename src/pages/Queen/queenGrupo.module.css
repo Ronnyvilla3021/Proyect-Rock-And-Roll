@@ -1,1 +1,263 @@
-/* Estilos en queen.module.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.queenPage {
+    font-family: 'Georgia', serif;
+    background:
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.15), transparent 50%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(15, 12, 2, 0.95), rgba(0, 0, 0, 0.95)),
+        url('../../images/queen/portada4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+}
+
+/* --- NAV & HEADER --- */
+.queenNav {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(to right, #000, #0d0900, #000);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+}
+
+.navContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navItem {
+    color: #cfcfcf;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    margin: 0 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-weight: 700;
+}
+
+.navItem:hover {
+    color: white;
+    text-shadow: 0 0 10px #d4af37;
+}
+
+.navDivider {
+    color: #d4af37;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.queenActive {
+    color: #ffd700;
+    text-shadow: 0 0 10px #d4af37;
+}
+
+.logoContainer {
+    text-align: center;
+    margin: 120px 0 40px;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 0 15px #d4af37, 0 0 30px #b8860b;
+    letter-spacing: 5px;
+    margin: 0;
+    line-height: 1;
+}
+
+.tagline {
+    font-size: 1.3rem;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* --- NUEVAS TARJETAS ESTILO PÓSTER GIGANTE --- */
+.posterContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 0 40px;
+    margin-bottom: 60px;
+}
+
+.posterCard {
+    position: relative;
+    height: 600px; /* Altura imponente para emular la imagen */
+    border-radius: 18px;
+    overflow: hidden;
+    border: 3px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background-color: #0b0905;
+}
+
+.posterCard:hover {
+    transform: translateY(-10px);
+    border-color: #ffd700;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+}
+
+.posterImg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+    transition: transform 0.6s ease;
+}
+
+.posterCard:hover .posterImg {
+    transform: scale(1.05);
+}
+
+/* El degradado dorado-oscuro inferior idéntico al de tu foto */
+.posterOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65%;
+    background: linear-gradient(to top, 
+        rgba(10, 7, 1, 1) 0%, 
+        rgba(26, 19, 3, 0.95) 30%, 
+        rgba(26, 19, 3, 0.7) 60%, 
+        transparent 100%);
+    pointer-events: none;
+}
+
+/* Caja de textos en el fondo del póster */
+.posterInfo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 20px;
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 220px;
+}
+
+.posterName {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffd700;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    text-transform: uppercase;
+}
+
+.posterRole {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.posterYears {
+    font-size: 0.9rem;
+    color: #d4af37;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+/* La descripción pequeña de 1 o 2 líneas */
+.posterBio {
+    font-size: 0.85rem;
+    color: #dddddd;
+    line-height: 1.4;
+    font-family: 'sans-serif';
+    font-weight: 300;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
+/* --- FOOTER --- */
+.footer {
+    background: linear-gradient(to right, #000, #0d0900, #000);
+    padding: 25px 0;
+    border-top: 3px solid #d4af37;
+    box-shadow: 0 -5px 20px rgba(212, 175, 55, 0.3);
+}
+
+.footerContent {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 40px;
+}
+
+.copyright {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* --- RESPONSIVE / ADAPTABILIDAD --- */
+@media (max-width: 1200px) {
+    .posterContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .posterCard {
+        height: 550px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 3.5rem;
+    }
+    .posterContainer {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+    .posterCard {
+        height: 500px;
+    }
+    .footerContent {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}

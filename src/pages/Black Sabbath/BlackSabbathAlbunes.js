@@ -113,11 +113,12 @@ const BlackSabbathAlbunes = () => {
         setCurrentVideo("");
     };
 
-    useEffect(() => {
-        const firstIndex = allAlbums.findIndex(album => album.name === "ELIGE TU ÁLBUM");
-        currentIndexRef.current = firstIndex !== -1 ? firstIndex : 0;
-        setCurrentAngle(-(currentIndexRef.current / allAlbums.length) * 360);
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
+    const firstIndex = allAlbums.findIndex(album => album.name === "ELIGE TU ÁLBUM");
+    currentIndexRef.current = firstIndex !== -1 ? firstIndex : 0;
+    setCurrentAngle(-(currentIndexRef.current / allAlbums.length) * 360);
+}, []);
 
     return (
         <div className={styles.sabbathPage} style={{ '--bg-image': `url(${portada})` }}>

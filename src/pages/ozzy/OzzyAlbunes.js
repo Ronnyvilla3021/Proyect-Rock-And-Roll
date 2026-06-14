@@ -57,8 +57,9 @@ const OzzyAlbunes = () => {
         videoRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    useEffect(() => {
-        const generateRandomStyles = () => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
+    const generateRandomStyles = () => {
             const positions = [
                 { top: 8, left: 2, rotate: -18 }, { top: 22, left: 5, rotate: -11 },
                 { top: 40, left: 3, rotate: 10 }, { top: 58, left: 7, rotate: -8 },

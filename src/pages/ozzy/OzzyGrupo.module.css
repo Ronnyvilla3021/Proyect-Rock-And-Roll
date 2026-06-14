@@ -151,7 +151,51 @@ p { margin: 5px 0; font-size: 1rem; color: #555; font-style: italic; }
 /* RESPONSIVE */
 /* ================================= */
 @media (max-width: 900px) {
-    .book { width: 90%; height: auto; flex-direction: column; }
-    .bookBindingCenter { display: none; }
-    .bookWrapper { flex-direction: column; height: auto; padding-top: 100px; }
+    /* 1. Resetear el contenedor del libro */
+    .book {
+        width: 90% !important;
+        height: auto !important;
+        flex-direction: column !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    /* 2. ELIMINAR LA LÍNEA CENTRAL QUE ESTÁ ROMPIENDO TODO */
+    .bookBindingCenter {
+        display: none !important;
+    }
+
+    /* 3. Ajustar el wrapper */
+    .bookWrapper {
+        flex-direction: column;
+        height: auto;
+        padding-top: 120px;
+        gap: 10px;
+    }
+
+    /* 4. Estilizar las páginas como tarjetas individuales */
+    .pageLeft, .pageRight {
+        width: 100% !important;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid #4a2c2a;
+        margin-bottom: 10px;
+        padding: 15px !important;
+        border-radius: 12px;
+        color: white !important; /* Texto blanco sobre fondo oscuro */
+    }
+
+    /* 5. Asegurar que las imágenes no se deformen */
+    .pageLeft img, .pageRight img {
+        width: 100px !important;
+        height: 100px !important;
+        margin-bottom: 10px;
+    }
+
+    /* 6. Ajuste de botones (moverlos arriba o abajo si estorban) */
+    .navBtn {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
 }

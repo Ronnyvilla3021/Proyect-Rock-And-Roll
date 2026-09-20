@@ -1,10 +1,10 @@
 .queenNav {
     background: linear-gradient(to right, #000, #0d0900, #000);
     padding: calc(15px + env(safe-area-inset-top, 0px)) 0 15px;
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     top: 0;
-    z-index: 1000;
+    z-index: 1000 !important;
     border-bottom: 3px solid #d4af37;
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
 }

@@ -1,620 +1,170 @@
-# 🎸 Rock And Roll
+# 🎸 Rock Legends
 
-## 🌐 Demo en vivo
+🌐 Demo en vivo
+Panel Web: https://rock-legends.netlify.app
 
-- **Panel Web**: https://rock-legends.netlify.app
 
-<p align="center">
-  <strong>Una experiencia web dedicada a las bandas más legendarias del rock y el heavy metal.</strong>
-</p>
-
-<p align="center">
-  Historia · Discografía · Lineup · Multimedia · Reproductor Global
-</p>
+Una página web dedicada a seis de las bandas más grandes de la historia del rock y el metal: **AC/DC, Ozzy Osbourne, Kiss, Iron Maiden, Black Sabbath y Queen**. Cada banda tiene su propio espacio con historia, discografía, integrantes y su identidad visual particular — y todo el sitio comparte un reproductor de música que sigue sonando sin importar por dónde navegues.
 
 ---
 
-## 📌 Sobre el proyecto
+## 📖 ¿Qué es este proyecto?
 
-**Rock And Roll** es una aplicación web desarrollada con **React** como proyecto personal, educativo y de entretenimiento. El sitio reúne información sobre seis bandas icónicas del rock y el heavy metal, combinando contenido histórico, discografía, integrantes y una experiencia visual temática para cada artista.
+Es un sitio web de una sola aplicación (lo que se conoce como *Single Page Application* o SPA) construido con **React**, uno de los frameworks más usados hoy en día para crear interfaces web. Esto significa que, aunque parezca que cambias de "página" cuando haces clic en un link, en realidad nunca se recarga el navegador — la aplicación simplemente intercambia el contenido en pantalla de forma instantánea. Por eso la música nunca se corta al navegar entre secciones.
 
-Uno de los elementos principales del proyecto es su **reproductor musical global**, diseñado para mantenerse activo mientras el usuario navega entre las diferentes páginas de la aplicación.
-
-> 🤘 **Long live rock and roll.**
-
----
-
-## 🎤 Bandas incluidas
-
-| Banda | Secciones | Identidad visual |
-|---|---|---|
-| ⚡ **AC/DC** | Historia · Álbumes · Grupo | 🔴 Rojo / 🟡 Amarillo |
-| 🦇 **Ozzy Osbourne** | Historia · Álbumes · Grupo | ⚪ Blanco / ⚙️ Gris |
-| 👅 **KISS** | Historia · Álbumes · Grupo | 🔴 Rojo fuego |
-| 🔥 **Iron Maiden** | Historia · Álbumes · Grupo | 🟦 Cian |
-| 🦇 **Black Sabbath** | Historia · Álbumes · Grupo | 🟣 Púrpura |
-| 👑 **Queen** | Historia · Álbumes · Grupo | 🟡 Dorado |
-
-Cada banda dispone de una página principal y secciones específicas dedicadas a su historia, álbumes y miembros.
+El sitio tiene **25 pantallas en total**:
+- Una página de inicio (Home) con las 6 bandas presentadas como tarjetas.
+- 4 pantallas por cada banda: **Inicio de la banda, Historia, Álbumes y Grupo (integrantes)**.
 
 ---
 
-## ✨ Características principales
+## 🛠️ Con qué está construido (la tecnología)
 
-### 🏠 Página principal
+| Herramienta | Para qué sirve, en simple |
+|---|---|
+| **React** | Es el motor que arma toda la interfaz. En vez de escribir HTML fijo, se construyen "piezas" reutilizables llamadas *componentes* (por ejemplo, el reproductor de música es una pieza, cada nav de banda es otra pieza) que se combinan para formar cada pantalla. |
+| **React Router** | Es el encargado de que la URL cambie (`/acdc`, `/kiss/historia`, etc.) y que se muestre la pantalla correcta, sin recargar el navegador. |
+| **CSS Modules** | Cada pantalla tiene su propio archivo de estilos (colores, tamaños, animaciones) que no interfiere con el de las demás, aunque usen nombres de clase parecidos. |
+| **Create React App** | Es la base/plantilla que organiza cómo se compila y se sirve el proyecto (lo que corre por detrás cuando haces `npm start`). |
+| **Google Fonts** | Las tipografías especiales de cada banda (Orbitron para Iron Maiden y Ozzy, Cinzel para Black Sabbath, etc.) se cargan desde Google, no son archivos del proyecto. |
 
-La Home presenta las seis bandas y funciona como punto de entrada para explorar todo el proyecto.
-
-### 📚 Historia
-
-Cada banda cuenta con una sección dedicada a su trayectoria, evolución y momentos importantes.
-
-### 💿 Discografía
-
-Las páginas de álbumes presentan información musical acompañada de contenido multimedia mediante **embeds de YouTube**.
-
-### 👥 Grupo / Lineup
-
-Se muestran integrantes actuales y pasados de las bandas incluidas en el proyecto.
-
-### 🎵 MiniPlayer global
-
-El reproductor aparece de forma flotante en la esquina inferior izquierda y permite controlar la música desde cualquier sección del sitio.
-
-Incluye:
-
-- ▶️ Play / Pause
-- ⏮️ Canción anterior
-- ⏭️ Canción siguiente
-- 🔀 Shuffle
-- 🔁 Repetición
-- 🎚️ Barra de progreso interactiva
-- 🖼️ Portada asociada a la canción
-- 🔽 Modo minimizado
-- 🎶 Reproducción continua entre páginas
-
-La reproducción se mantiene gracias a un **Context API** que conserva el elemento `<audio>` mientras el usuario navega por la aplicación.
+No se usó ninguna librería de diseño externa (como Bootstrap o Material UI) — todo el diseño visual de cada banda fue hecho a mano, en CSS puro, banda por banda, con su propia paleta de colores y estilo.
 
 ---
 
-# 🎨 Identidad visual
+## 🎵 El reproductor de música
 
-Una de las características principales de **Rock And Roll** es que cada banda posee una estética propia.
+Es la pieza más importante que conecta todo el sitio, porque **vive fuera de las pantallas individuales** — está "montado" a nivel de toda la aplicación, así que cuando cambias de banda o de sección, la canción que estabas escuchando sigue sonando sin interrupciones.
 
-### ⚡ AC/DC
+**Qué puede hacer:**
+- Reproducir, pausar, pasar a la siguiente canción o volver a la anterior.
+- Modo **aleatorio** (shuffle): salta canciones al azar en vez de en orden.
+- Modo **repetir**: puedes elegir repetir toda la lista en bucle, o solo la canción actual.
+- Muestra una **barra de progreso** con el tiempo transcurrido y la duración total, y puedes arrastrarla para saltar a otra parte de la canción.
+- Muestra la **carátula** de la banda que corresponde a la canción sonando.
+- Se puede **minimizar** a una pequeña píldora (solo el nombre de la canción y play/pausa) para que no estorbe visualmente, y volver a expandir con un toque.
 
-- Rayos animados
-- Vinilos giratorios
-- Paleta roja y amarilla
-- Estética inspirada en el hard rock
-
-### 🦇 Ozzy Osbourne
-
-- Murciélagos animados
-- Cruces decorativas
-- Efectos de niebla
-- Tonos blancos y grises
-
-### 👅 KISS
-
-- Estrella de 8 puntas
-- Esfera 3D orbital
-- Partículas brillantes
-- Estética de espectáculo y escenario
-
-### 🔥 Iron Maiden
-
-- Carrusel 3D de vinilos
-- Grid cian
-- Iluminación dinámica
-- Inspiración visual en el heavy metal clásico
-
-### 🦇 Black Sabbath
-
-- Mandala radial
-- Efectos spotlight
-- Partículas púrpuras
-- Ambiente oscuro y psicodélico
-
-### 👑 Queen
-
-- Corona creada con CSS
-- Brillo dorado
-- Estética de escenario
-- Inspiración en la identidad visual de la banda
+Cada banda tiene sus propias canciones cargadas (AC/DC, Ozzy, Kiss, Iron Maiden, Black Sabbath y Queen), y la playlist completa mezcla canciones de todas ellas.
 
 ---
 
-# 🛠️ Tecnologías utilizadas
+## 🧭 La navegación (el menú de cada banda)
 
-## Frontend
+Cada banda tiene un menú de navegación en la parte superior con 5 opciones: **Inicio, [Nombre de la banda], Historia, Álbumes y Grupo**. Este menú:
 
-- **React 19**
-- **React Router DOM 7**
-- **CSS Modules**
-- **JavaScript**
-- **HTML5**
-- **CSS3**
-
-## Multimedia
-
-- **HTML5 Audio API**
-- **YouTube Embed**
-- Archivos de audio locales en formato MP3
-
-## Estado
-
-- **React Context API**
-- `useRef`
-- Hooks de React
-- Manejo de eventos nativos del elemento `<audio>`
-
-## Testing
-
-El proyecto incluye dependencias para pruebas:
-
-- `@testing-library/react`
-- `@testing-library/jest-dom`
-- `@testing-library/user-event`
-
-## Build
-
-- **Create React App**
-- `react-scripts 5.0.1`
+- Siempre queda **fijo en la parte superior de la pantalla**, sin importar cuánto hagas scroll hacia abajo — así siempre puedes cambiar de sección sin tener que volver a subir.
+- Resalta con un color distinto la sección en la que estás parado en ese momento.
+- Cada banda tiene su propio menú con el estilo visual de esa banda (colores, tipografía, efectos), pero los 6 funcionan exactamente igual por dentro.
 
 ---
 
-# 🧠 Arquitectura del reproductor
+## 📱 ¿Funciona bien en celular y tablet?
 
-El estado global de la música se encuentra centralizado en:
+Sí — el sitio fue revisado y ajustado específicamente para verse y comportarse bien en:
 
-```text
+- **Teléfonos Android**
+- **iPhones** (incluyendo los que tienen el "notch" o la barra de gestos inferior — el contenido no queda tapado por esos elementos del sistema)
+- **Tablets** (tanto en orientación vertical como horizontal)
+
+También se eliminó ese "flash" celeste o azul molesto que a veces aparece al tocar botones en pantallas táctiles (es un comportamiento por defecto del navegador, no algo que se hubiera diseñado así a propósito).
+
+---
+
+## 📂 Estructura del proyecto (organización de carpetas)
+
+```
 src/
-└── context/
-    └── MusicContext.js
-```
-
-El contexto expone información y acciones como:
-
-```js
-{
-  currentTrack,
-  isPlaying,
-  currentTime,
-  duration,
-  shuffle,
-  repeatMode,
-  play,
-  pause,
-  togglePlay,
-  next,
-  prev,
-  seek,
-  toggleShuffle,
-  cycleRepeatMode,
-  allTracks
-}
-```
-
-### 🎧 Flujo de reproducción
-
-```text
-Usuario
-   │
-   ▼
-MiniPlayer
-   │
-   ▼
-MusicContext
-   │
-   ▼
-Elemento <audio>
-   │
-   ├── play / pause
-   ├── timeupdate
-   ├── loadedmetadata
-   └── ended
-```
-
-El elemento `<audio>` se crea una sola vez mediante `useRef` con inicialización perezosa. Los listeners nativos se registran con el ciclo de vida de React y cuentan con su correspondiente limpieza.
-
-Esto permite que el reproductor continúe funcionando mientras el usuario cambia de ruta.
-
----
-
-# 🎵 Playlist
-
-El reproductor incluye **30 canciones** distribuidas entre las seis bandas.
-
-| Banda | Canciones | Archivos |
-|---|---:|---|
-| ⚡ AC/DC | 7 | `acdc1.mp3` – `acdc7.mp3` |
-| 🦇 Ozzy Osbourne | 7 | `ozzy1.mp3` – `ozzy7.mp3` |
-| 👅 KISS | 5 | `kiss1.mp3` – `kiss5.mp3` |
-| 🔥 Iron Maiden | 5 | `ironmaiden1.mp3` – `ironmaiden5.mp3` |
-| 🦇 Black Sabbath | 4 | `blacksabbath1.mp3` – `blacksabbath4.mp3` |
-| 👑 Queen | 2 | `queen1.mp3` – `queen2.mp3` |
-| **Total** | **30** | — |
-
-### Modos disponibles
-
-**Reproducción normal**
-```text
-Canción 1 → Canción 2 → Canción 3 → ...
-```
-
-**Shuffle**
-```text
-Canción 1 → Canción 7 → Canción 3 → Canción 12 → ...
-```
-
-**Repeat**
-```text
-OFF  →  ALL  →  ONE
-```
-
----
-
-# 📁 Estructura del proyecto
-
-```text
-Proyect-Rock-And-Roll/
+├── App.js                    → El punto central: define qué pantalla se muestra según la URL
+├── index.js / index.css      → El arranque de la aplicación
 │
-├── public/
-│   ├── index.html
-│   ├── _redirects
-│   │
-│   └── Musicas/
-│       ├── acdc1.mp3
-│       ├── acdc2.mp3
-│       ├── ...
-│       ├── blacksabbath1.mp3
-│       ├── ...
-│       ├── ironmaiden1.mp3
-│       ├── ...
-│       ├── kiss1.mp3
-│       ├── ...
-│       ├── ozzy1.mp3
-│       ├── ...
-│       ├── queen1.mp3
-│       └── queen2.mp3
+├── components/                → Piezas reutilizables en todo el sitio
+│   ├── MiniPlayer.js/.css      → El reproductor de música flotante
+│   ├── ScrollToTop.js          → Hace que cada pantalla nueva empiece arriba del todo
+│   └── nav/                    → Un menú de navegación por cada banda (6 en total)
 │
-└── src/
-    │
-    ├── App.js
-    ├── index.js
-    ├── index.css
-    │
-    ├── components/
-    │   ├── MiniPlayer.js
-    │   ├── MiniPlayer.module.css
-    │   │
-    │   └── nav/
-    │       ├── AcdcNav.js
-    │       ├── AcdcNav.module.css
-    │       ├── BlackSabbathNav.js
-    │       ├── BlackSabbathNav.module.css
-    │       ├── IronMaidenNav.js
-    │       ├── IronMaidenNav.module.css
-    │       ├── KissNav.js
-    │       ├── KissNav.module.css
-    │       ├── OzzyNav.js
-    │       ├── OzzyNav.module.css
-    │       ├── QueenNav.js
-    │       └── QueenNav.module.css
-    │
-    ├── context/
-    │   └── MusicContext.js
-    │
-    ├── images/
-    │   ├── acdc/
-    │   ├── blacksabbath/
-    │   ├── Home/
-    │   ├── ironmaiden/
-    │   ├── kiss/
-    │   ├── ozzy/
-    │   └── queen/
-    │
-    └── pages/
-        ├── Home.js
-        ├── Home.module.css
-        │
-        ├── acdc/
-        │   ├── ACDC.js
-        │   ├── ACDC.module.css
-        │   ├── albunes.js
-        │   ├── albunes.module.css
-        │   ├── historia.js
-        │   ├── historia.module.css
-        │   ├── grupo.js
-        │   └── grupo.module.css
-        │
-        ├── ozzy/
-        │   ├── OZZY.js
-        │   ├── OZZY.module.css
-        │   ├── OzzyAlbunes.js
-        │   ├── OzzyAlbunes.module.css
-        │   ├── OzzyHistoria.js
-        │   ├── OzzyHistoria.module.css
-        │   ├── OzzyGrupo.js
-        │   └── OzzyGrupo.module.css
-        │
-        ├── Kiss/
-        │   └── 4 páginas + CSS
-        │
-        ├── Iron Maiden/
-        │   └── 4 páginas + CSS
-        │
-        ├── Black Sabbath/
-        │   └── 4 páginas + CSS
-        │
-        └── Queen/
-            └── 4 páginas + CSS
+├── context/
+│   └── MusicContext.js        → El "cerebro" del reproductor: guarda qué canción suena,
+│                                  si está en pausa, en aleatorio, etc., y lo comparte con
+│                                  toda la aplicación
+│
+├── images/                    → Todas las fotos, portadas de álbumes y carátulas
+│
+└── pages/                     → Las 25 pantallas del sitio
+    ├── Home.js                 → Página de inicio
+    ├── acdc/                   → Las 4 pantallas de AC/DC
+    ├── ozzy/                   → Las 4 pantallas de Ozzy
+    ├── Kiss/                   → Las 4 pantallas de Kiss
+    ├── Iron Maiden/             → Las 4 pantallas de Iron Maiden
+    ├── Black Sabbath/           → Las 4 pantallas de Black Sabbath
+    └── Queen/                   → Las 4 pantallas de Queen
 ```
 
----
-
-# 🧭 Rutas de la aplicación
-
-| Ruta | Contenido |
-|---|---|
-| `/` | 🏠 Home |
-| `/acdc` | ⚡ AC/DC |
-| `/acdc/historia` | Historia de AC/DC |
-| `/acdc/albunes` | Álbumes de AC/DC |
-| `/acdc/grupo` | Grupo de AC/DC |
-| `/ozzy` | 🦇 Ozzy Osbourne |
-| `/ozzy/historia` | Historia de Ozzy |
-| `/ozzy/albunes` | Álbumes de Ozzy |
-| `/ozzy/grupo` | Grupo de Ozzy |
-| `/kiss` | 👅 KISS |
-| `/kiss/historia` | Historia de KISS |
-| `/kiss/albunes` | Álbumes de KISS |
-| `/kiss/grupo` | Grupo de KISS |
-| `/ironmaiden` | 🔥 Iron Maiden |
-| `/ironmaiden/historia` | Historia de Iron Maiden |
-| `/ironmaiden/albunes` | Álbumes de Iron Maiden |
-| `/ironmaiden/grupo` | Grupo de Iron Maiden |
-| `/blacksabbath` | 🦇 Black Sabbath |
-| `/blacksabbath/historia` | Historia de Black Sabbath |
-| `/blacksabbath/albunes` | Álbumes de Black Sabbath |
-| `/blacksabbath/grupo` | Grupo de Black Sabbath |
-| `/queen` | 👑 Queen |
-| `/queen/historia` | Historia de Queen |
-| `/queen/albunes` | Álbumes de Queen |
-| `/queen/grupo` | Grupo de Queen |
+Cada pantalla tiene dos archivos hermanos: uno `.js` (qué contenido y qué comportamiento tiene) y uno `.module.css` (cómo se ve).
 
 ---
 
-# 📱 Diseño responsive
+## ⚙️ Cómo poner el proyecto a correr en tu computadora
 
-El proyecto está diseñado para adaptarse a diferentes tamaños de pantalla.
+Necesitas tener instalado **Node.js** (versión 18, según lo que ya tiene configurado el proyecto).
 
-| Breakpoint | Dispositivo |
-|---|---|
-| `> 1024px` | 🖥️ Desktop |
-| `≤ 1024px` | 💻 Laptop / Tablet horizontal |
-| `≤ 768px` | 📱 Tablet vertical / móvil grande |
-| `≤ 480px` | 📱 Móvil estándar |
-| `≤ 360px` | 📱 Móvil pequeño |
-
-Los estilos se encuentran encapsulados mediante **CSS Modules**, evitando conflictos entre componentes y permitiendo que cada banda mantenga su propia identidad visual.
-
----
-
-# 🚀 Instalación
-
-## Requisitos
-
-Antes de comenzar, asegúrate de tener instalado:
-
-- **Node.js 18.x o superior**
-- **npm** o **yarn**
-- Git, si vas a clonar el repositorio
-
-Puedes comprobar las versiones con:
-
-```bash
-node --version
-npm --version
-```
+1. Abre una terminal en la carpeta del proyecto.
+2. Instala las dependencias (las librerías que el proyecto necesita para funcionar):
+   ```
+   npm install
+   ```
+3. Levanta el proyecto en modo desarrollo:
+   ```
+   npm start
+   ```
+   Esto abre el sitio en tu navegador en `http://localhost:3000`, y se va actualizando solo cada vez que guardas un cambio.
+4. Cuando quieras generar la versión final lista para subir a internet:
+   ```
+   npm run build
+   ```
+   Esto crea una carpeta `build/` con todo optimizado y comprimido, lista para publicar en un servicio como Netlify o Vercel.
 
 ---
 
-## 📥 Clonar el proyecto
+## 🔧 Todo lo que se revisó, corrigió y optimizó
 
-```bash
-git clone <url-del-repositorio>
-cd Proyect-Rock-And-Roll
-```
+Durante el desarrollo se hizo un proceso completo de depuración del proyecto. Esto es lo que se trabajó, explicado en simple:
 
----
+### Rendimiento (que el sitio corra más liviano y fluido)
+- Se corrigieron varios casos donde el código recalculaba cosas innecesariamente cada vez que la pantalla se actualizaba (por ejemplo, listas de datos o efectos visuales que se recreaban de cero sin necesidad).
+- Se agregó **carga diferida** (`loading="lazy"`) a imágenes y videos que estaban más abajo en la pantalla, para que no se descarguen hasta que el usuario realmente vaya a verlos — esto acelera la carga inicial de cada página.
+- Se corrigieron listeners de eventos (como el scroll o el cambio de tamaño de ventana) que se disparaban decenas de veces por segundo sin necesidad, y ahora están controlados para no sobrecargar el navegador.
 
-## 📦 Instalar dependencias
+### Organización del código
+- Los 6 menús de navegación, que antes estaban **copiados y pegados** en cada una de las 24 pantallas de banda (con pequeñas inconsistencias entre copias), ahora son **un solo componente reutilizable por banda** — más fácil de mantener y sin duplicación de código.
+- Se eliminó CSS que ya no se usaba (clases que quedaron huérfanas después de cambios anteriores en el proyecto).
+- Se corrigieron inconsistencias de tipografía que hacían que algunas páginas de una misma banda no cargaran la fuente correcta si el usuario entraba directo a esa página sin pasar antes por otra.
 
-```bash
-npm install
-```
-
----
-
-## ▶️ Ejecutar en desarrollo
-
-```bash
-npm start
-```
-
-La aplicación estará disponible normalmente en:
-
-```text
-http://localhost:3000
-```
+### Errores puntuales corregidos
+- Un carrusel de álbumes (Black Sabbath) que se "trababa" en el celular si el usuario tocaba varios álbumes muy rápido seguido.
+- Un video que, al hacer clic en un álbum, no bajaba la pantalla automáticamente hasta donde se reproduce (en la sección de Iron Maiden).
+- Textos poco legibles por falta de contraste de color en un par de secciones.
+- Un pie de página que quedaba prácticamente invisible en algunas pantallas de Kiss por falta de fondo.
+- Un espacio vacío que aparecía al final de una página de Black Sabbath por un elemento decorativo que "estiraba" la página más de lo necesario.
+- El menú de navegación que en algunas pantallas dejaba de estar fijo en la parte superior al hacer scroll (por un conflicto entre reglas de estilo).
+- Que la pantalla no volviera arriba del todo al cambiar de sección (ahora cada cambio de página inicia siempre desde arriba).
 
 ---
 
-# 🏗️ Build de producción
+## 🎨 Sobre el diseño
 
-Para generar una versión optimizada para producción:
+Cada banda tiene una identidad visual completamente distinta, pensada para reflejar su estilo musical:
 
-```bash
-npm run build
-```
+- **AC/DC** — rojo y negro, rayos, tipografía agresiva.
+- **Ozzy Osbourne** — blanco y negro, ambiente oscuro con murciélagos y niebla.
+- **Kiss** — rojo intenso, estrellas, estética de "ejército del rock".
+- **Iron Maiden** — cian/negro futurista, con acentos rojos tipo grafiti.
+- **Black Sabbath** — morado y negro, atmósfera de niebla, focos de luz y partículas flotantes.
+- **Queen** — dorado y negro, estética elegante tipo "realeza".
 
-El resultado se generará dentro de:
-
-```text
-build/
-```
-
----
-
-# 🧪 Testing
-
-Para ejecutar el sistema de pruebas:
-
-```bash
-npm test
-```
-
-Actualmente el proyecto cuenta con las herramientas necesarias para desarrollar pruebas con:
-
-```text
-@testing-library/react
-@testing-library/jest-dom
-@testing-library/user-event
-```
+Ninguno de estos estilos fue modificado durante el proceso de optimización — todo el trabajo de depuración y mejora de rendimiento se hizo cuidando que el diseño se viera exactamente igual que antes.
 
 ---
 
-# 📜 Scripts disponibles
+## 👤 Créditos
 
-| Comando | Descripción |
-|---|---|
-| `npm start` | Ejecuta el proyecto en modo desarrollo |
-| `npm run build` | Genera la versión de producción |
-| `npm test` | Ejecuta el test runner |
-| `npm run eject` | ⚠️ Expone la configuración interna de Create React App |
-
-> ⚠️ `npm run eject` es una operación irreversible. En la mayoría de los casos no es necesario utilizarla.
-
----
-
-# 🔮 Próximas mejoras
-
-El proyecto está preparado para seguir evolucionando. Entre las mejoras previstas se encuentran:
-
-- [ ] 🚀 Migración de **Create React App → Vite**
-- [ ] ⚡ Implementación de **Code Splitting**
-- [ ] 💤 Uso de `React.lazy` para cargar las bandas bajo demanda
-- [ ] 🧪 Tests automatizados para `MusicContext`
-- [ ] 🧪 Tests automatizados para `MiniPlayer`
-- [ ] 🧩 Unificación de las seis barras de navegación en componentes reutilizables
-- [ ] ✨ Transiciones animadas entre rutas
-- [ ] 🌓 Modo oscuro / claro alternativo
-- [ ] 📱 Mejoras adicionales de accesibilidad
-- [ ] 🎵 Ampliación de la biblioteca musical
-
----
-
-# 🎯 Objetivos del proyecto
-
-Este proyecto fue creado con varios objetivos:
-
-1. Practicar el desarrollo de interfaces modernas con **React**.
-2. Aplicar **React Router** para crear una SPA con múltiples rutas.
-3. Trabajar con **Context API** para manejar estado global.
-4. Integrar la **HTML5 Audio API**.
-5. Crear componentes visuales reutilizables.
-6. Experimentar con animaciones y efectos utilizando CSS.
-7. Construir interfaces responsive.
-8. Integrar contenido multimedia externo mediante YouTube.
-9. Organizar un proyecto React de varias páginas y componentes.
-10. Crear una experiencia temática alrededor de la música rock.
-
----
-
-# 🧩 Conceptos técnicos destacados
-
-### Context API
-
-Permite compartir el estado del reproductor entre las diferentes páginas sin necesidad de pasar manualmente las propiedades por múltiples niveles de componentes.
-
-### CSS Modules
-
-Cada componente puede mantener sus propios estilos encapsulados:
-
-```text
-MiniPlayer.js
-MiniPlayer.module.css
-```
-
-Esto reduce el riesgo de colisiones entre clases CSS.
-
-### React Router
-
-La navegación se realiza como una **Single Page Application**, evitando recargas completas del documento al cambiar de sección.
-
-### HTML5 Audio API
-
-El reproductor utiliza un elemento `<audio>` para controlar:
-
-- Reproducción
-- Pausa
-- Progreso
-- Duración
-- Cambio de pista
-- Eventos de finalización
-
-### YouTube Embed
-
-Las secciones de discografía integran videos de YouTube directamente dentro de las páginas.
-
----
-
-# ⚠️ Créditos y contenido multimedia
-
-Este proyecto utiliza contenido relacionado con artistas y bandas reconocidas con fines **educativos, demostrativos y de entretenimiento**.
-
-- 🖼️ Portadas de álbumes: material relacionado con las bandas utilizado con fines ilustrativos.
-- ▶️ Videos: contenido integrado mediante YouTube.
-- 🎵 Música: archivos MP3 utilizados como parte de la demostración del reproductor.
-
-Los derechos de las marcas, imágenes, canciones y demás materiales pertenecen a sus respectivos propietarios.
-
----
-
-# 📄 Licencia
-
-Proyecto personal desarrollado con fines **educativos y de entretenimiento**.
-
-No se pretende reclamar propiedad sobre las marcas, nombres, canciones, imágenes o demás material perteneciente a terceros.
-
----
-
-# 👤 Autor
-
-<p align="center">
-
-### **R.A.V.V**
-
-Proyecto personal desarrollado por hobby y pasión por el rock.
-
-</p>
-
----
-
-# 🤘 Rock And Roll
-
-<p align="center">
-
-**AC/DC · Ozzy Osbourne · KISS · Iron Maiden · Black Sabbath · Queen**
-
-<br>
-
-🎸 **Música, historia y código en un solo lugar.**
-
-<br><br>
-
-**Long live rock and roll! 🤘**
-
-</p>
+Proyecto desarrollado por **Ronny** como parte de su portafolio personal.

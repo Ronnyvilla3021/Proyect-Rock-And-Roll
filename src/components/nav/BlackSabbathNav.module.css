@@ -1,10 +1,10 @@
 .sabbathNav {
     background: linear-gradient(to right, #000, #0a000f, #000);
     padding: calc(15px + env(safe-area-inset-top, 0px)) 0 15px;
-    position: fixed;
+    position: fixed !important;
     top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 1000 !important;
     border-bottom: 3px solid #7b2cbf;
     box-shadow: 0 0 20px rgba(123, 44, 191, .7);
 }

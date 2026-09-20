@@ -1,5 +1,5 @@
 .nav {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     width: 100%;
     display: flex;
@@ -9,7 +9,7 @@
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 2px solid #ff0000;
-    z-index: 1000;
+    z-index: 1000 !important;
 }
 
 .link {

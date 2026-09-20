@@ -1,8 +1,8 @@
 .kissNav {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 100 !important;
     backdrop-filter: blur(12px);
     background: rgba(0, 0, 0, 0.55);
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);

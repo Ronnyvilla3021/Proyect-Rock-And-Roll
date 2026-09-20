@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Permanent+Marker&family=Cinzel:wght@700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -26,80 +24,6 @@
     inset: 0;
     background: linear-gradient(180deg, rgba(2, 6, 17, 0.7) 0%, rgba(5, 8, 15, 0.95) 100%);
     z-index: 0;
-}
-
-/* TOP BAR */
-.topBar {
-    background: black;
-    color: #8a8a8a;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 6px 20px;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #111;
-}
-
-/* HEADER Y MENÚ (Sincronizado con el diseño original) */
-.header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.maidenNav {
-    background: linear-gradient(to right, #020611, #08111f, #020611);
-    padding: 15px 0;
-    border-bottom: 3px solid #00ffff;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
-}
-
-.navContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: flex;
-    justify-content: center; /* Centrado absoluto */
-    align-items: center;
-    gap: 30px;
-}
-
-.navLinks {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.navItem {
-    color: #cfd8dc;
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 10px 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    font-weight: 700;
-}
-
-.navItem:hover, .maidenActive {
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
-}
-
-/* Logo alineado con el resto del sitio */
-.navLogo {
-    font-family: 'Permanent Marker', cursive;
-    color: #e51313;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    line-height: 1;
-    padding-left: 10px;
-    text-shadow: 2px 2px 0 #000, -1px -1px 0 #fff;
-    letter-spacing: -1px;
-    white-space: nowrap;
 }
 
 /* SECCIÓN DEL TÍTULO DE LA PÁGINA */
@@ -379,24 +303,6 @@
   .maidenPage {
     padding-top: 130px;
   }
-  .navContainer {
-    flex-direction: column;
-    padding: 8px;
-    gap: 6px;
-  }
-  .navLinks {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-  .navItem {
-    font-size: 0.76rem;
-    padding: 5px 8px;
-  }
-  .navLogo {
-    font-size: 1.3rem;
-    padding-left: 0;
-  }
   .logo {
     font-size: 2.8rem;
     letter-spacing: 3px;
@@ -466,5 +372,12 @@
   .albumCover {
     width: 100px;
     height: 100px;
+  }
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .maidenPage {
+    min-height: 100dvh;
   }
 }

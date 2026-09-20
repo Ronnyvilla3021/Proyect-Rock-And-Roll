@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './albunes.module.css';
+import AcdcNav from '../../components/nav/AcdcNav';
 
 // IMÁGENES
 import img1 from "../../images/acdc/album1.jpg";
@@ -24,8 +24,8 @@ import img18 from "../../images/acdc/album18.jpg";
 
 const ALBUMS_DATA = [
     { id: '1', name: "High Voltage", img: img1, video: "Nnjh-zp6pP4", year: 1975, info: "Debut de AC/DC con Bon Scott, sonido crudo de hard rock australiano." },
-    { id: '2', name: "T.N.T", img: img2, video: "LADzLojLRCU", year: 1975, info: "Explosión del estilo clásico de la banda." },
-    { id: '3', name: "Dirty Deeds Done Dirt Cheap", img: img3, video: "ihfWAu0OX2I", year: 1976, info: "Uno de los discos más icónicos de Bon Scott." },
+    { id: '2', name: "T.N.T", img: img2, video: "KwbBzSodFs0", year: 1975, info: "Explosión del estilo clásico de la banda." },
+    { id: '3', name: "Dirty Deeds Done Dirt Cheap", img: img3, video: "9v8pAxWL6C4", year: 1976, info: "Uno de los discos más icónicos de Bon Scott." },
     { id: '4', name: "Let There Be Rock", img: img4, video: "3f2g4RMfhS0", year: 1977, info: "Rock puro, riffs pesados y energía en vivo." },
     { id: '5', name: "Powerage", img: img5, video: "-0Oa5wvARSc", year: 1978, info: "Uno de los álbumes más infravalorados pero más potentes." },
     { id: '6', name: "Highway to Hell", img: img6, video: "l482T0yNkeo", year: 1979, info: "Último álbum con Bon Scott antes de su muerte." },
@@ -59,13 +59,7 @@ const Albunes = () => {
 
     return (
         <div className={styles.container}>
-            <nav className={styles.nav}>
-                <Link to="/" className={styles.link}>INICIO</Link>
-                <Link to="/acdc" className={styles.link}>AC/DC</Link>
-                <Link to="/acdc/historia" className={styles.link}>HISTORIA</Link>
-                <Link to="/acdc/albunes" className={`${styles.link} ${styles.active}`}>ÁLBUMES</Link>
-                <Link to="/acdc/grupo" className={styles.link}>GRUPO</Link>
-            </nav>
+            <AcdcNav active="albunes" />
 
             <header className={styles.header}>
                 <h1>⚡ DISCOGRAFIA ⚡</h1>
@@ -88,6 +82,7 @@ const Albunes = () => {
                     <iframe
                         src={`https://www.youtube.com/embed/${currentVideo}`}
                         title="AC/DC Music Video"
+                        loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     />

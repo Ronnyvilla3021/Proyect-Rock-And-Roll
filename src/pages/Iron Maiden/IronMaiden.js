@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './IronMaiden.module.css';
+import IronMaidenNav from '../../components/nav/IronMaidenNav';
 
 // Asegúrate de que la ruta sea correcta en tu sistema de archivos
 import portada from '../../images/ironmaiden/portada.png';
@@ -8,23 +8,7 @@ import portada from '../../images/ironmaiden/portada.png';
 const IronMaiden = () => {
     return (
         <div className={styles.maidenPage}>
-            {/* HEADER FIJO */}
-            <header className={styles.header}>
-                <nav className={styles.maidenNav}>
-                    <div className={styles.navContainer}>
-                        <div className={styles.navLinks}>
-                            <Link to="/" className={styles.navItem}>INICIO</Link>
-                            <Link to="/ironmaiden" className={`${styles.navItem} ${styles.maidenActive}`}>IRON MAIDEN</Link>
-                            <Link to="/ironmaiden/historia" className={styles.navItem}>HISTORIA</Link>
-                            <Link to="/ironmaiden/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                            <Link to="/ironmaiden/grupo" className={styles.navItem}>GRUPO</Link>
-                        </div>
-                        <div className={styles.navLogo}>
-                            IRON MAIDEN
-                        </div>
-                    </div>
-                </nav>
-            </header>
+            <IronMaidenNav active="ironmaiden" />
 
             {/* HERO SECTION */}
             <section 

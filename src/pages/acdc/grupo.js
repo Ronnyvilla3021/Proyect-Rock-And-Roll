@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './grupo.module.css';
+import AcdcNav from '../../components/nav/AcdcNav';
 
 // IMÁGENES
 import g1 from "../../images/acdc/grupo1.jpg";
@@ -64,13 +64,7 @@ const AcdcGrupo = () => {
 
     return (
         <div className={styles.page}>
-            <nav className={styles.nav}>
-                <Link to="/" className={styles.link}>INICIO</Link>
-                <Link to="/acdc" className={styles.link}>AC/DC</Link>
-                <Link to="/acdc/historia" className={styles.link}>HISTORIA</Link>
-                <Link to="/acdc/albunes" className={styles.link}>ÁLBUMES</Link>
-                <Link to="/acdc/grupo" className={`${styles.link} ${styles.active}`}>GRUPO</Link>
-            </nav>
+            <AcdcNav active="grupo" />
 
             <header className={styles.header}>
                 <h1>⚡ AC/DC ARCHIVO COMPLETO ⚡</h1>

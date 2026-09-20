@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './OZZY.module.css';
+import OzzyNav from '../../components/nav/OzzyNav';
 
 /* IMÁGENES */
 import poster1 from '../../images/ozzy/1.jpg';
@@ -10,20 +10,7 @@ import poster3 from '../../images/ozzy/3.jpg';
 const Ozzy = () => {
     return (
         <div className={styles.ozzyPage}>
-            {/* NAVBAR */}
-            <nav className={styles.ozzyNav}>
-                <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navItem}>INICIO</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy" className={`${styles.navItem} ${styles.ozzyActive}`}>OZZY</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy/historia" className={styles.navItem}>HISTORIA</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/ozzy/grupo" className={styles.navItem}>GRUPO</Link>
-                </div>
-            </nav>
+            <OzzyNav active="ozzy" />
 
             {/* LOGO */}
             <div className={styles.logoContainer}>

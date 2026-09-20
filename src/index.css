@@ -1,0 +1,25 @@
+/* Reglas base globales — necesarias para que el sitio se comporte bien
+   en Android, iOS y tablets. No agregan ni cambian ningún estilo visual. */
+
+html {
+  /* Fallback universal; cada página ya define su propio min-height: 100vh */
+  height: 100%;
+}
+
+body {
+  /* Evita el resaltado táctil azul/celeste al tocar elementos en
+     Android/Chrome móvil, en todo el sitio (ya lo aplicamos en el
+     MiniPlayer; aquí queda como base general). */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iOS Safari no contempla su barra de direcciones dinámica en 100vh,
+   lo que puede recortar contenido o dejar un hueco al hacer scroll.
+   dvh (dynamic viewport height) sí lo hace. Los navegadores que no
+   soportan dvh simplemente ignoran esta línea y siguen usando el
+   100vh que cada página ya define. */
+@supports (height: 100dvh) {
+  html, body, #root {
+    min-height: 100dvh;
+  }
+}

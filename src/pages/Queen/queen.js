@@ -1,39 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './queen.module.css';
+import QueenNav from '../../components/nav/QueenNav';
 
 /* IMPORTACIÓN DE IMÁGENES */
 import portada1 from '../../images/queen/portada.jpg';
 import portada2 from '../../images/queen/portada2.jpg';
 import portada3 from '../../images/queen/portada3.jpg';
 
+const CAROUSEL_IMAGES = [portada1, portada2, portada3];
+
 const Queen = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const images = [portada1, portada2, portada3];
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % images.length);
+            setCurrentIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
         }, 5000);
         return () => clearInterval(timer);
-    }, [images.length]);
+    }, []);
 
     return (
         <div className={styles.queenPage}>
-            {/* NAV */}
-            <nav className={styles.queenNav}>
-                <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navItem}>INICIO</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen" className={`${styles.navItem} ${styles.queenActive}`}>QUEEN</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/historia" className={styles.navItem}>HISTORIA</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/grupo" className={styles.navItem}>GRUPO</Link>
-                </div>
-            </nav>
+            <QueenNav active="queen" />
 
             {/* LOGOTIPO Y CABECERA */}
             <div className={styles.logoContainer}>
@@ -48,7 +36,7 @@ const Queen = () => {
             {/* CARRUSEL DE IMÁGENES (STAGE DISPLAY) */}
             <div className={styles.stageDisplayContainer}>
                 <div className={styles.stageDisplay}>
-                    {images.map((image, index) => (
+                    {CAROUSEL_IMAGES.map((image, index) => (
                         <div
                             key={index}
                             className={`${styles.stageSlide} ${index === currentIndex ? styles.stageActive : ''}`}

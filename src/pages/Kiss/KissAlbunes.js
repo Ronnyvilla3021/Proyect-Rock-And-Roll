@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './KissAlbunes.module.css';
+import KissNav from '../../components/nav/KissNav';
 
 /* IMÁGENES */
 import imgKiss from '../../images/kiss/kiss.jpg';
@@ -77,7 +77,7 @@ const KissAlbunes = () => {
 
     const handleAlbumClick = (name) => {
         setCurrentVideo(albumVideos[name] || "https://www.youtube.com/embed/SuKT5BDlNMU");
-        videoRef.current.scrollIntoView({ behavior: 'smooth' });
+        videoRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     const half = Math.ceil(albums.length / 2);
@@ -86,13 +86,7 @@ const KissAlbunes = () => {
 
     return (
         <div className={styles.rockContainer} style={{ backgroundImage: `url(${portada})` }}>
-            <nav className={styles.rockNav}>
-                <Link to="/" className={styles.rockNavItem}>INICIO</Link>
-                <Link to="/kiss" className={styles.rockNavItem}>KISS</Link>
-                <Link to="/kiss/historia" className={styles.rockNavItem}>HISTORIA</Link>
-                <Link to="/kiss/albunes" className={`${styles.rockNavItem} ${styles.rockActive}`}>ÁLBUMES</Link>
-                <Link to="/kiss/grupo" className={styles.rockNavItem}>GRUPO</Link>
-            </nav>
+            <KissNav active="albunes" />
 
             <header className={styles.rockHeader}>
                 <h1 className={styles.rockTitle}>ÁLBUMES</h1>
@@ -124,6 +118,7 @@ const KissAlbunes = () => {
                                 src={currentVideo}
                                 title="KISS"
                                 frameBorder="0"
+                                loading="lazy"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                                 className={styles.rockVideo}

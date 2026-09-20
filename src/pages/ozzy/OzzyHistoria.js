@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './OzzyHistoria.module.css';
+import OzzyNav from '../../components/nav/OzzyNav';
 
 /* IMPORTACIÓN DE IMÁGENES */
 import img4 from '../../images/ozzy/4.jpg';
@@ -80,17 +80,27 @@ const OzzyHistoria = () => {
     const [shake, setShake] = useState(false);
     const [news, setNews] = useState([]);
     const prevScroll = useRef(0);
+    const tickingRef = useRef(false);
 
-    /* Lógica de vibración al hacer scroll */
+    /* Lógica de vibración al hacer scroll (con throttle vía requestAnimationFrame) */
     useEffect(() => {
-        const handleScroll = () => {
+        const checkShake = () => {
             const y = window.scrollY;
             if (Math.abs(y - prevScroll.current) > 500) {
                 setShake(true);
                 setTimeout(() => setShake(false), 300);
             }
             prevScroll.current = y;
+            tickingRef.current = false;
         };
+
+        const handleScroll = () => {
+            if (!tickingRef.current) {
+                tickingRef.current = true;
+                requestAnimationFrame(checkShake);
+            }
+        };
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -117,18 +127,7 @@ const OzzyHistoria = () => {
 
     return (
         <div className={`${styles.historiaContainer} ${shake ? styles.shake : ''}`}>
-            {/* NAVBAR */}
-            <nav className={styles.navbar}>
-                <Link className={styles.navLink} to="/">INICIO</Link>
-                <span className={styles.separator}>|</span>
-                <Link className={styles.navLink} to="/ozzy">OZZY</Link>
-                <span className={styles.separator}>|</span>
-                <Link className={styles.navLink} to="/ozzy/historia">HISTORIA</Link>
-                <span className={styles.separator}>|</span>
-                <Link className={styles.navLink} to="/ozzy/albunes">ÁLBUMES</Link>
-                <span className={styles.separator}>|</span>
-                <Link className={styles.navLink} to="/ozzy/grupo">GRUPO</Link>
-            </nav>
+            <OzzyNav active="historia" />
 
             {/* ESCENAS CINEMATOGRÁFICAS */}
             <div className={styles.cinemaContainer}>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './ACDC.module.css';
+import AcdcNav from '../../components/nav/AcdcNav';
 
 import img1 from "../../images/acdc/1.jpg";
 import img2 from "../../images/acdc/2.jpg";
@@ -45,13 +45,7 @@ const ACDC = () => {
             <div className={styles.lightning}></div>
             <div className={styles.lightning2}></div>
 
-            <nav className={styles.nav}>
-                <Link to="/" className={styles.link}>INICIO</Link>
-                <Link to="/acdc" className={`${styles.link} ${styles.active}`}>AC/DC</Link>
-                <Link to="/acdc/historia" className={styles.link}>HISTORIA</Link>
-                <Link to="/acdc/albunes" className={styles.link}>ÁLBUMES</Link>
-                <Link to="/acdc/grupo" className={styles.link}>GRUPO</Link>
-            </nav>
+            <AcdcNav active="acdc" />
 
             <header className={styles.hero}>
                 <h1 className={styles.logo}>⚡AC<span>/</span>DC⚡</h1>
@@ -80,21 +74,21 @@ const ACDC = () => {
 
             <section className={styles.cardsGrid}>
                 <div className={styles.hoverCard}>
-                    <img src={img4} alt="Back in Black" />
+                    <img src={img4} alt="Back in Black" loading="lazy" />
                     <div className={styles.hoverInfo}>
                         <h3>Back in Black</h3>
                         <p>1980 - Álbum legendario del rock</p>
                     </div>
                 </div>
                 <div className={styles.hoverCard}>
-                    <img src={img5} alt="Angus Young" />
+                    <img src={img5} alt="Angus Young" loading="lazy" />
                     <div className={styles.hoverInfo}>
                         <h3>Angus Young</h3>
                         <p>Guitarra</p>
                     </div>
                 </div>
                 <div className={styles.hoverCard}>
-                    <img src={img6} alt="Brian Johnson" />
+                    <img src={img6} alt="Brian Johnson" loading="lazy" />
                     <div className={styles.hoverInfo}>
                         <h3>Brian Johnson</h3>
                         <p>Entró en 1980 tras Bon Scott</p>

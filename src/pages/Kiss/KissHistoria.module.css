@@ -6,6 +6,7 @@
     min-height: 100vh;
     color: white;
     overflow-x: hidden;
+    padding-top: 90px;
 }
 
 .kissPage::before {
@@ -44,50 +45,6 @@
     background: crimson;
     z-index: 9999;
     transition: width 0.2s ease;
-}
-
-/* ========================= */
-/* NAVBAR (Sincronizado) */
-/* ========================= */
-.kissNav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(12px);
-    background: rgba(0, 0, 0, 0.55);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.navContainer {
-    max-width: 1400px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0;           /* Eliminamos el gap para usar padding individual */
-    padding: 20px;
-    flex-wrap: wrap;
-}
-
-.navItem {
-    color: #ddd;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    padding: 0 12px;  /* Espaciado lateral exacto del original */
-    transition: 0.3s;
-}
-
-.navItem:hover {
-    color: white;
-    text-shadow: 0 0 10px white;
-}
-
-/* Estado activo para consistencia total */
-.active, .navItem.active, .kissActive {
-    color: white;
-    text-shadow: 0 0 10px crimson, 0 0 20px crimson;
 }
 
 /* ========================= */
@@ -187,10 +144,9 @@
 /* FOOTER */
 /* ========================= */
 .footer {
-    padding: 60px 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(10px);
+    padding: 40px 20px;
+    border-top: 2px solid #ff4500;
+    background: rgba(0, 0, 0, 0.92);
 }
 
 .footerContent {
@@ -216,17 +172,6 @@
 }
  
 @media (max-width: 768px) {
-  .navContainer {
-    flex-wrap: wrap;
-    gap: 2px;
-    padding: 14px 10px;
-    justify-content: center;
-  }
-  .navItem {
-    font-size: 0.8rem;
-    letter-spacing: 1.5px;
-    padding: 0 8px;
-  }
   .logoContainer {
     min-height: 45vh;
   }
@@ -270,15 +215,18 @@
   .logo {
     font-size: 3.5rem;
   }
-  .navItem {
-    font-size: 0.72rem;
-    padding: 0 6px;
-  }
   .rockSection {
     padding: 22px 16px;
     border-radius: 14px;
   }
   .titleMain {
     font-size: 1.2rem;
+  }
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .kissPage {
+    min-height: 100dvh;
   }
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { MusicProvider } from './context/MusicContext';   // 👈 NUEVO
-import MiniPlayer from './components/MiniPlayer';         // 👈 NUEVO
+import { MusicProvider } from './context/MusicContext';
+import MiniPlayer from './components/MiniPlayer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import ACDC from './pages/acdc/ACDC';
 import Albunes from './pages/acdc/albunes';
@@ -31,6 +32,7 @@ import QueenGrupo from './pages/Queen/queenGrupo';
 const App = () => {
     return (
         <Router>
+            <ScrollToTop />
             <MusicProvider>
                 <div className="App">
                     <Routes>

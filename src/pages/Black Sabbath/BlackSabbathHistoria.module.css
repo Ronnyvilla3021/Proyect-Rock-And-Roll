@@ -22,51 +22,6 @@
 }
 
 /* ================================= */
-/* NAVBAR */
-/* ================================= */
-/* ================= NAV (EQUIVALENTE AL ORIGINAL) ================= */
-.sabbathNav {
-    background: linear-gradient(to right, #000, #0a000f, #000);
-    padding: 15px 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 3px solid #7b2cbf;
-    box-shadow: 0 0 20px rgba(123, 44, 191, .7);
-}
-
-.navContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.navItem {
-    color: #cfcfcf;
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 10px 15px;
-    font-weight: 700;
-    transition: .3s;
-}
-
-.navItem:hover {
-    color: white;
-    text-shadow: 0 0 15px #7b2cbf;
-}
-
-.navDivider { 
-    color: #7b2cbf; 
-}
-
-.sabbathActive {
-    color: #cfaeff;
-    text-shadow: 0 0 15px #7b2cbf;
-}
-
-/* ================================= */
 /* CONTENEDOR ENVOLVENTE (MANDALA) */
 /* ================================= */
 .mandalaWrapper {
@@ -297,21 +252,6 @@
 }
  
 @media (max-width: 768px) {
-  .sabbathNav {
-    padding: 10px 0;
-  }
-  .navContainer {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px;
-  }
-  .navDivider {
-    display: none;
-  }
-  .navItem {
-    font-size: 0.8rem;
-    padding: 6px 8px;
-  }
   .mandalaWrapper {
     padding-top: 105px;
     padding-left: 12px;
@@ -349,7 +289,12 @@
   .titleMain {
     font-size: 1.1rem;
   }
-  .navItem {
-    font-size: 0.7rem;
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .sabbathPage,
+  .mandalaWrapper {
+    min-height: 100dvh;
   }
 }

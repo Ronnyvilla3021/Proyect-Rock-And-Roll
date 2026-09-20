@@ -23,7 +23,7 @@ const BANDS = [
 
 const Card = ({ title, image, link }) => (
     <Link to={link} className={styles.card}>
-        <img src={image} alt={title} className={styles.card__img} />
+        <img src={image} alt={title} className={styles.card__img} loading="lazy" />
         <span className={styles.card__footer}>{title}</span>
     </Link>
 );
@@ -40,9 +40,7 @@ const Home = () => {
     } = useMusic();
 
     const handlePlayPause = () => {
-        if (isPlaying) {
-            togglePlay();
-        } else if (currentTrack) {
+        if (isPlaying || currentTrack) {
             togglePlay();
         } else if (allTracks?.length > 0) {
             play(allTracks[0]);

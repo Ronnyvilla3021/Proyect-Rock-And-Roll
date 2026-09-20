@@ -1,26 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './queenHistoria.module.css';
+import QueenNav from '../../components/nav/QueenNav';
 
 const QueenHistoria = () => {
     const currentYear = new Date().getFullYear();
 
     return (
         <div className={styles.queenPage}>
-            {/* NAVEGACIÓN */}
-            <nav className={styles.queenNav}>
-                <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navItem}>INICIO</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen" className={styles.navItem}>QUEEN</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/historia" className={`${styles.navItem} ${styles.queenActive}`}>HISTORIA</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/grupo" className={styles.navItem}>GRUPO</Link>
-                </div>
-            </nav>
+            <QueenNav active="historia" />
 
             {/* CONTENIDO PRINCIPAL */}
             <div className={styles.mainContentContainer}>

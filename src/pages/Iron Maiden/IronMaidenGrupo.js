@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './IronMaidenGrupo.module.css';
+import IronMaidenNav from '../../components/nav/IronMaidenNav';
 
 // Importaciones
 import portadaImg from '../../images/ironmaiden/portada2.jpg';
@@ -34,21 +34,7 @@ const pastMembers = [
 const IronMaidenGrupo = () => {
     return (
         <div className={styles.maidenPage} style={{ backgroundImage: `url(${portadaImg})` }}>
-            <header className={styles.header}>
-                <nav className={styles.maidenNav}>
-                    <div className={styles.navContainer}>
-                        <div className={styles.navSpacer}></div>
-                        <div className={styles.navLinks}>
-                            <Link to="/" className={styles.navItem}>INICIO</Link>
-                            <Link to="/ironmaiden" className={styles.navItem}>IRON MAIDEN</Link>
-                            <Link to="/ironmaiden/historia" className={styles.navItem}>HISTORIA</Link>
-                            <Link to="/ironmaiden/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                            <Link to="/ironmaiden/grupo" className={`${styles.navItem} ${styles.maidenActive}`}>GRUPO</Link>
-                        </div>
-                        <div className={styles.navLogo}>IRON MAIDEN</div>
-                    </div>
-                </nav>
-            </header>
+            <IronMaidenNav active="grupo" />
 
             <div className={styles.logoContainer}>
                 <h1 className={styles.logo}>GRUPO</h1>
@@ -68,7 +54,7 @@ const IronMaidenGrupo = () => {
                                     <span>⚙️</span><span>⚙️</span>
                                 </div>
                                 <div className={styles.imgWrapper}>
-                                    <img src={m.img} alt={m.name} className={styles.memberImg} />
+                                    <img src={m.img} alt={m.name} className={styles.memberImg} loading="lazy" />
                                     <div className={styles.frameOverlay}></div>
                                 </div>
                                 <div className={styles.infoWrapper}>

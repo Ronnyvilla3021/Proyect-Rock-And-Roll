@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './BlackSabbathHistoria.module.css';
+import BlackSabbathNav from '../../components/nav/BlackSabbathNav';
 
 // Importación de imágenes locales según tu estructura de carpetas
 import portada3 from '../../images/blacksabbath/portada3.jpg';
@@ -13,19 +13,7 @@ const BlackSabbathHistoria = () => {
     return (
         <div className={styles.sabbathPage}>
             {/* BARRA DE NAVEGACIÓN */}
-            <nav className={styles.sabbathNav}>
-                <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navItem}>INICIO</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/blacksabbath" className={styles.navItem}>BLACK SABBATH</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/blacksabbath/historia" className={`${styles.navItem} ${styles.sabbathActive}`}>HISTORIA</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/blacksabbath/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/blacksabbath/grupo" className={styles.navItem}>GRUPO</Link>
-                </div>
-            </nav>
+            <BlackSabbathNav active="historia" />
 
             {/* CONTENEDOR PRINCIPAL DEL MANDALA RADIAL */}
             <div className={styles.mandalaWrapper}>

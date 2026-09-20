@@ -1,0 +1,72 @@
+.kissNav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: env(safe-area-inset-top, 0px);
+}
+
+.navContainer {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 20px;
+}
+
+.navItem {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #ddd;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 0 12px;
+    transition: 0.3s;
+    text-shadow: none;
+    -webkit-text-stroke: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.navItem:hover {
+    color: white;
+    text-shadow: 0 0 10px white;
+}
+
+.kissActive {
+    color: white;
+    text-shadow: 0 0 10px crimson, 0 0 20px crimson;
+}
+
+@media (max-width: 768px) {
+  .navContainer {
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 14px 12px;
+    justify-content: center;
+  }
+  .navItem {
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navItem {
+    font-size: 0.72rem;
+    padding: 0 6px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navItem {
+    font-size: 0.65rem;
+  }
+}

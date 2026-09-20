@@ -6,6 +6,7 @@
     min-height: 100vh;
     color: white;
     overflow-x: hidden;
+    padding-top: 90px;
 }
 
 .kissPage::before {
@@ -25,48 +26,6 @@
     inset: 0;
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.90));
     z-index: -2;
-}
-
-/* ============================
-   NAVBAR
-============================ */
-.kissNav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(12px);
-    background: rgba(0, 0, 0, 0.55);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.navContainer {
-    max-width: 1400px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-    padding: 20px;
-}
-
-.navItem {
-    color: #ddd;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    padding: 0 12px;
-    transition: 0.3s;
-}
-
-.navItem:hover {
-    color: white;
-    text-shadow: 0 0 10px white;
-}
-
-.navItem.active, .kissActive {
-    color: white;
-    text-shadow: 0 0 10px crimson, 0 0 20px crimson;
 }
 
 /* ============================
@@ -143,6 +102,7 @@
     cursor: pointer;
     transition: 0.6s ease;
     border: 2px solid rgba(255, 255, 255, 0.08);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .originalCard:hover {
@@ -264,9 +224,13 @@
 ============================ */
 .footer {
     text-align: center;
-    padding: 80px 20px;
+    padding: 40px 20px;
     color: #999;
     letter-spacing: 3px;
+    background: rgba(0, 0, 0, 0.92);
+    border-top: 2px solid #ff4500;
+    position: relative;
+    z-index: 1;
 }
 
 /* ============================
@@ -290,20 +254,6 @@
 }
  
 @media (max-width: 768px) {
-  .kissNav {
-    position: sticky;
-  }
-  .navContainer {
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 14px 10px;
-    justify-content: center;
-  }
-  .navItem {
-    font-size: 0.8rem;
-    letter-spacing: 1.5px;
-    padding: 0 8px;
-  }
   .hero {
     min-height: 55vh;
     padding-top: 0;
@@ -369,13 +319,17 @@
   .cardContent h3 {
     font-size: 1.7rem;
   }
-  .navItem {
-    font-size: 0.72rem;
-  }
 }
  
 @media (max-width: 360px) {
   .hero h1 {
     font-size: 3rem;
+  }
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .kissPage {
+    min-height: 100dvh;
   }
 }

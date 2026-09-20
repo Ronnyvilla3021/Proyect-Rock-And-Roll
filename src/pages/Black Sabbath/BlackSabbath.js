@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './BlackSabbath.module.css';
+import BlackSabbathNav from '../../components/nav/BlackSabbathNav';
 import portada from '../../images/blacksabbath/portada.png';
 
 const BlackSabbath = () => {
@@ -33,20 +33,7 @@ const BlackSabbath = () => {
                 ))}
             </div>
 
-            {/* MENU */}
-            <nav className={styles.sabbathNav}>
-                <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navItem}>INICIO</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/blacksabbath" className={`${styles.navItem} ${styles.sabbathActive}`}>BLACK SABBATH</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/blacksabbath/historia" className={styles.navItem}>HISTORIA</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/blacksabbath/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/blacksabbath/grupo" className={styles.navItem}>GRUPO</Link>
-                </div>
-            </nav>
+            <BlackSabbathNav active="blacksabbath" />
 
             {/* HERO */}
             <section className={styles.concertHero}>

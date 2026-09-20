@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './IronMaidenHistoria.module.css';
+import IronMaidenNav from '../../components/nav/IronMaidenNav';
 
 // Importaciones
 import portada from '../../images/ironmaiden/portada2.jpg';
@@ -67,20 +67,7 @@ const erasData = [
 const IronMaidenHistoria = () => {
     return (
         <div className={styles.maidenPage} style={{ backgroundImage: `url(${portada})` }}>
-            <header className={styles.header}>
-                <nav className={styles.maidenNav}>
-                    <div className={styles.navContainer}>
-                        <div className={styles.navLinks}>
-                            <Link to="/" className={styles.navItem}>INICIO</Link>
-                            <Link to="/ironmaiden" className={styles.navItem}>IRON MAIDEN</Link>
-                            <Link to="/ironmaiden/historia" className={`${styles.navItem} ${styles.maidenActive}`}>HISTORIA</Link>
-                            <Link to="/ironmaiden/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                            <Link to="/ironmaiden/grupo" className={styles.navItem}>GRUPO</Link>
-                        </div>
-                        <div className={styles.navLogo}>IRON MAIDEN</div>
-                    </div>
-                </nav>
-            </header>
+            <IronMaidenNav active="historia" />
 
             <div className={styles.logoContainer}>
                 <h1 className={styles.logo}>HISTORIA</h1>
@@ -98,7 +85,7 @@ const IronMaidenHistoria = () => {
                         <div className={styles.eraBody}>
                             <div className={styles.eddieCard}>
                                 <div className={styles.avatarWrapper}>
-                                    <img src={era.eddieImg} alt={era.eddieName} className={styles.eddieImage} />
+                                    <img src={era.eddieImg} alt={era.eddieName} className={styles.eddieImage} loading="lazy" />
                                     <div className={styles.frameOverlay}></div>
                                 </div>
                                 <div className={styles.eddieInfoBox}>
@@ -110,7 +97,7 @@ const IronMaidenHistoria = () => {
                             </div>
                             <div className={styles.albumCard}>
                                 <div className={styles.albumFlex}>
-                                    <img src={era.albumImg} alt={era.albumTitle} className={styles.albumCover} />
+                                    <img src={era.albumImg} alt={era.albumTitle} className={styles.albumCover} loading="lazy" />
                                     <div className={styles.albumMeta}>
                                         <h4>{era.albumTitle}</h4>
                                         <p>{era.resumenAlbum}</p>

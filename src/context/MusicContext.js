@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useState, useCallback } from 'react';
+import { createContext, useContext, useRef, useState, useCallback, useEffect } from 'react';
 
 const MusicContext = createContext();
 
@@ -42,19 +42,40 @@ const ALL_TRACKS = [
 ];
 
 export const MusicProvider = ({ children }) => {
-  const audioRef = useRef(new Audio());
+  // Inicialización perezosa: el objeto Audio se crea UNA sola vez,
+  // no en cada render (antes: useRef(new Audio()) evaluaba new Audio() en cada render).
+  const audioRef = useRef(null);
+  if (audioRef.current === null) {
+    audioRef.current = new Audio();
+  }
+
   const [currentTrack, setCurrentTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [shuffle, setShuffle] = useState(false);
+  // 'off' | 'all' | 'one'
+  const [repeatMode, setRepeatMode] = useState('all');
+
+  // Refs "espejo" para poder leer el valor más reciente desde dentro
+  // de listeners nativos del <audio> sin recrearlos en cada cambio de estado.
+  const currentTrackRef = useRef(currentTrack);
+  const shuffleRef = useRef(shuffle);
+  const repeatModeRef = useRef(repeatMode);
+
+  useEffect(() => { currentTrackRef.current = currentTrack; }, [currentTrack]);
+  useEffect(() => { shuffleRef.current = shuffle; }, [shuffle]);
+  useEffect(() => { repeatModeRef.current = repeatMode; }, [repeatMode]);
 
   // Reproducir una canción específica
   const play = useCallback((track) => {
     if (!track) return;
-    if (currentTrack?.src !== track.src) {
+    if (currentTrackRef.current?.src !== track.src) {
       audioRef.current.src = track.src;
       setCurrentTrack(track);
     }
-    audioRef.current.play().then(() => setIsPlaying(true));
-  }, [currentTrack]);
+    audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+  }, []);
 
   const pause = useCallback(() => {
     audioRef.current.pause();
@@ -64,38 +85,101 @@ export const MusicProvider = ({ children }) => {
   const togglePlay = useCallback(() => {
     if (isPlaying) {
       pause();
-    } else if (currentTrack) {
-      audioRef.current.play().then(() => setIsPlaying(true));
+    } else if (currentTrackRef.current) {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
     }
-  }, [isPlaying, pause, currentTrack]);
+  }, [isPlaying, pause]);
 
   const next = useCallback(() => {
-    if (!currentTrack) return;
-    const idx = ALL_TRACKS.findIndex(t => t.src === currentTrack.src);
-    const nextIdx = (idx + 1) % ALL_TRACKS.length;
+    const current = currentTrackRef.current;
+    if (!current) return;
+
+    if (repeatModeRef.current === 'one') {
+      play(current);
+      return;
+    }
+
+    const idx = ALL_TRACKS.findIndex((t) => t.src === current.src);
+
+    if (shuffleRef.current && ALL_TRACKS.length > 1) {
+      let randomIdx;
+      do {
+        randomIdx = Math.floor(Math.random() * ALL_TRACKS.length);
+      } while (randomIdx === idx);
+      play(ALL_TRACKS[randomIdx]);
+      return;
+    }
+
+    let nextIdx = idx + 1;
+    if (nextIdx >= ALL_TRACKS.length) {
+      if (repeatModeRef.current === 'off') {
+        pause();
+        return;
+      }
+      nextIdx = 0;
+    }
     play(ALL_TRACKS[nextIdx]);
-  }, [currentTrack, play]);
+  }, [play, pause]);
 
   const prev = useCallback(() => {
-    if (!currentTrack) return;
-    const idx = ALL_TRACKS.findIndex(t => t.src === currentTrack.src);
+    const current = currentTrackRef.current;
+    if (!current) return;
+    const idx = ALL_TRACKS.findIndex((t) => t.src === current.src);
     const prevIdx = (idx - 1 + ALL_TRACKS.length) % ALL_TRACKS.length;
     play(ALL_TRACKS[prevIdx]);
-  }, [currentTrack, play]);
+  }, [play]);
 
-  // Cuando termina una canción, pasa a la siguiente
-  audioRef.current.onended = () => {
-    next();
-  };
+  const toggleShuffle = useCallback(() => {
+    setShuffle((s) => !s);
+  }, []);
+
+  // Ciclo: off -> all -> one -> off ...
+  const cycleRepeatMode = useCallback(() => {
+    setRepeatMode((mode) => (mode === 'off' ? 'all' : mode === 'all' ? 'one' : 'off'));
+  }, []);
+
+  const seek = useCallback((time) => {
+    if (Number.isFinite(time)) {
+      audioRef.current.currentTime = time;
+      setCurrentTime(time);
+    }
+  }, []);
+
+  // Listeners nativos del <audio>, montados UNA sola vez.
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const handleEnded = () => next();
+    const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const handleLoadedMetadata = () => setDuration(audio.duration || 0);
+
+    audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+    return () => {
+      audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const value = {
     currentTrack,
     isPlaying,
+    currentTime,
+    duration,
+    shuffle,
+    repeatMode,
     play,
     pause,
     togglePlay,
     next,
     prev,
+    seek,
+    toggleShuffle,
+    cycleRepeatMode,
     allTracks: ALL_TRACKS,
   };
 

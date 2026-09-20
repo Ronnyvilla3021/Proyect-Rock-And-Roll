@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './historia.module.css';
+import AcdcNav from '../../components/nav/AcdcNav';
 
 import portada from "../../images/acdc/portada.jpg";
 import img1 from "../../images/acdc/7.jpg";
@@ -13,13 +13,7 @@ const Historia = () => {
     return (
         <div className={styles.page} style={{ backgroundImage: `url(${portada})` }}>
 
-            <nav className={styles.nav}>
-                <Link to="/" className={styles.link}>INICIO</Link>
-                <Link to="/acdc" className={styles.link}>AC/DC</Link>
-                <Link to="/acdc/historia" className={styles.active}>HISTORIA</Link>
-                <Link to="/acdc/albunes" className={styles.link}>ÁLBUMES</Link>
-                <Link to="/acdc/grupo" className={styles.link}>GRUPO</Link>
-            </nav>
+            <AcdcNav active="historia" />
 
             <header className={styles.header}>
                 <h1>⚡ HISTORIA AC/DC ⚡</h1>
@@ -30,7 +24,7 @@ const Historia = () => {
                 
                 <div className={styles.itemLeft}>
                     <div className={styles.timelineImage}>
-                        <img src={img1} alt="1973 AC/DC" />
+                        <img src={img1} alt="1973 AC/DC" loading="lazy" />
                     </div>
                     <div className={styles.node}></div>
                     <div className={styles.content}>
@@ -46,13 +40,13 @@ const Historia = () => {
                     </div>
                     <div className={styles.node}></div>
                     <div className={styles.timelineImage}>
-                        <img src={img2} alt="Ascenso AC/DC" />
+                        <img src={img2} alt="Ascenso AC/DC" loading="lazy" />
                     </div>
                 </div>
 
                 <div className={styles.itemLeft}>
                     <div className={styles.timelineImage}>
-                        <img src={img3} alt="Bon Scott era" />
+                        <img src={img3} alt="Bon Scott era" loading="lazy" />
                     </div>
                     <div className={styles.node}></div>
                     <div className={styles.content}>
@@ -68,13 +62,13 @@ const Historia = () => {
                     </div>
                     <div className={styles.node}></div>
                     <div className={styles.timelineImage}>
-                        <img src={img4} alt="Gloria AC/DC" />
+                        <img src={img4} alt="Gloria AC/DC" loading="lazy" />
                     </div>
                 </div>
 
                 <div className={styles.itemLeft}>
                     <div className={styles.timelineImage}>
-                        <img src={img5} alt="Actualidad AC/DC" />
+                        <img src={img5} alt="Actualidad AC/DC" loading="lazy" />
                     </div>
                     <div className={styles.node}></div>
                     <div className={styles.content}>

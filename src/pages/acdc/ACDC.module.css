@@ -51,35 +51,6 @@
     94% { opacity: 0; }
 }
 
-/* ================= NAV ================= */
-.nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid #ff0000;
-    z-index: 1000;
-}
-
-.link {
-    color: #aaa;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.link:hover {
-    color: #ffcc00;
-}
-
-.active {
-    color: #ff0000;
-}
-
 /* ================= HERO ================= */
 .hero {
     text-align: center;
@@ -131,6 +102,7 @@
     color: white;
     cursor: pointer;
     padding: 5px 10px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* ================= PROGRESS BAR ================= */
@@ -149,6 +121,16 @@
     max-width: 800px;
     margin: 60px auto;
     text-align: center;
+}
+
+.info h2 {
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.info p {
+    color: #f2f2f2;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* ================= CARDS GRID ================= */
@@ -217,6 +199,7 @@
     background: rgba(0, 0, 0, 0.6);
     transition: 0.3s;
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .officialButton:hover {
@@ -251,16 +234,6 @@
 }
  
 @media (max-width: 768px) {
-  .nav {
-    gap: 8px;
-    padding: 12px 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .link {
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-  }
   .hero {
     margin-top: 90px;
     padding: 0 15px;
@@ -316,14 +289,6 @@
   .logo {
     font-size: 2.4rem;
   }
-  .nav {
-    gap: 6px;
-    padding: 10px 5px;
-  }
-  .link {
-    font-size: 0.68rem;
-    padding: 4px 6px;
-  }
   .hoverCard {
     height: 180px;
   }
@@ -333,7 +298,11 @@
   .logo {
     font-size: 2rem;
   }
-  .link {
-    font-size: 0.62rem;
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .page {
+    min-height: 100dvh;
   }
 }

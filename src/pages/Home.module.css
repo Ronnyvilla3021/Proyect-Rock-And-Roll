@@ -17,27 +17,10 @@ body {
   min-height: 100vh;
 }
 
-/* ================= NAV SOLO ESTÉTICA ================= */
-
-.mainNav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  z-index: 100;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  padding: 0 40px;
-}
-
-.logo {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.6rem;
-  letter-spacing: 4px;
+@supports (min-height: 100dvh) {
+  .page {
+    min-height: 100dvh;
+  }
 }
 
 /* ================= HERO ================= */
@@ -51,6 +34,12 @@ body {
   padding: 0 8%;
   position: relative;
   overflow: hidden;
+}
+
+@supports (height: 100dvh) {
+  .heroSection {
+    height: 100dvh;
+  }
 }
 
 .heroOverlay {
@@ -112,6 +101,7 @@ body {
   cursor: pointer;
   transition: 0.15s;
   backdrop-filter: blur(6px);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .controls button:hover {
@@ -148,6 +138,7 @@ body {
   color: white;
   text-align: center;
   transition: 0.15s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .card__img {
@@ -175,19 +166,47 @@ body {
 
 /* ================= RESPONSIVE ================= */
 
+@media (max-width: 1200px) {
+  .heroContent h1 {
+    font-size: 5.5rem;
+  }
+  .cardSection {
+    gap: 12px;
+  }
+  .card {
+    width: 140px;
+    height: 168px;
+  }
+}
+
 /* Para pantallas medianas (Tablets) */
 @media (max-width: 1024px) {
   .heroSection {
     grid-template-columns: 1fr;
-    padding: 20px;
+    padding: 20px 30px;
     height: auto;
+    min-height: 100vh;
+    gap: 30px;
     text-align: center;
-    gap: 40px;
+    align-items: center;
+  }
+
+  @supports (min-height: 100dvh) {
+    .heroSection {
+      min-height: 100dvh;
+    }
+  }
+
+  .heroOverlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0.88), rgba(0,0,0,0.6));
   }
 
   .heroContent {
     max-width: 100%;
-    margin-top: 60px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .heroContent h1 {
@@ -200,24 +219,93 @@ body {
 
   .cardSection {
     justify-self: center;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablet */
+    grid-template-columns: repeat(3, 1fr);
     padding-bottom: 40px;
   }
 }
 
 /* Para pantallas pequeñas (Móviles / iPhone) */
-@media (max-width: 600px) {
-  .heroContent h1 {
-    font-size: 3rem;
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 20px;
+    gap: 24px;
   }
-
+  .heroContent h1 {
+    font-size: 3.5rem;
+  }
+  .heroContent p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .subtitle {
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+  }
+  .player {
+    margin-top: 18px;
+  }
+  .controls button {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+  .nowPlaying {
+    font-size: 0.7rem;
+  }
   .cardSection {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding-bottom: 40px;
+    max-width: 340px;
+  }
+  .card {
+    width: 100%;
+    height: 160px;
+  }
+  .card__img {
+    height: 115px;
+  }
+  .card__footer {
+    font-size: 0.6rem;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContent {
+    margin-top: 40px;
+  }
+  .heroContent h1 {
+    font-size: 2.6rem;
+    line-height: 1;
+  }
+  .heroContent p {
+    font-size: 0.82rem;
+  }
+  .cardSection {
+    max-width: 300px;
     gap: 10px;
   }
-
   .card {
-    width: 130px; /* Un poco más pequeño para móviles */
-    height: 160px;
+    height: 145px;
+  }
+  .card__img {
+    height: 100px;
+  }
+  .card__footer {
+    font-size: 0.56rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .heroContent h1 {
+    font-size: 2.1rem;
+  }
+  .cardSection {
+    max-width: 260px;
+    gap: 8px;
+  }
+  .card {
+    height: 130px;
   }
 }

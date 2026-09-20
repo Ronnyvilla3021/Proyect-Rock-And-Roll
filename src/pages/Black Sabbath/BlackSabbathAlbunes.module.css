@@ -14,7 +14,9 @@
     min-height: 100vh;
     color: white;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden; /* eje Y agregado: recorta el brillo de los .spotlight
+       que se extendía por debajo del footer real, generando un hueco
+       fantasma al hacer scroll hasta el final. */
     font-family: 'Cinzel', serif;
     background-image: linear-gradient(rgba(0, 0, 0, .65), rgba(0, 0, 0, .92)), var(--bg-image);
     background-size: cover;
@@ -105,36 +107,6 @@
 @keyframes lightThree { from { transform: rotate(25deg); } to { transform: rotate(8deg); } }
 
 /* ========================================================== */
-/* NAV BAR */
-/* ========================================================== */
-.sabbathNav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: linear-gradient(to right, #000, #0a000f, #000);
-    border-bottom: 3px solid #7b2cbf;
-    box-shadow: 0 0 20px rgba(123, 44, 191, .7);
-    padding: 15px 0;
-    backdrop-filter: blur(10px);
-}
-
-.navContainer { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; }
-
-.navItem {
-    color: #cfcfcf;
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 10px 15px;
-    font-weight: 700;
-    transition: .3s;
-}
-
-.navItem:hover { color: white; text-shadow: 0 0 15px #7b2cbf; }
-.navDivider { color: #7b2cbf; }
-.sabbathActive { color: #e0c3ff; text-shadow: 0 0 15px #7b2cbf; }
-
-/* ========================================================== */
 /* HEADER Y CONTENIDO */
 /* ========================================================== */
 .rockHeader {
@@ -180,6 +152,38 @@
     margin-top: 30px;
 }
 
+/* Flechas laterales para girar el carrusel (control táctil en móvil) */
+.carouselArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(160, 100, 255, .6);
+    background: rgba(20, 0, 30, .7);
+    color: #e0c3ff;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 15px rgba(123, 44, 191, .5);
+    transition: all .3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carouselArrow:hover {
+    background: rgba(123, 44, 191, .7);
+    border-color: #d9b3ff;
+    box-shadow: 0 0 25px #7b2cbf;
+}
+
+.carouselArrowLeft { left: 10px; }
+.carouselArrowRight { right: 10px; }
+
 .carousel3d {
     position: relative;
     width: 1000px;
@@ -206,6 +210,7 @@
     transition: transform .8s ease, box-shadow .8s ease;
     backface-visibility: hidden;
     will-change: transform;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .tombStone3d::before {
@@ -239,7 +244,7 @@
 
 .tombShade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, .98), rgba(0, 0, 0, .7), rgba(0, 0, 0, .2)); }
 .tombText { position: absolute; bottom: 18px; width: 100%; text-align: center; z-index: 2; color: #d9b3ff; }
-.tombTitle { font-size: 1.1rem; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 10px #7b2cbf; }
+.tombTitle { font-size: 1.1rem; font-weight: 900; letter-spacing: 2px; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 3px #7b2cbf; }
 .tombYear { margin-top: 5px; color: #aaa; font-weight: 600; }
 
 .activeTomb {
@@ -270,6 +275,7 @@
     box-shadow: 0 0 15px rgba(123, 44, 191, 0.4), inset 0 0 10px rgba(0, 0, 0, 0.5);
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     animation: pulseGlow 2s infinite alternate;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .videoLaunchBtn span { color: #ffffff; text-shadow: 0 0 8px #d9b3ff; margin-left: 5px; }
@@ -285,14 +291,13 @@
 .videoBox { width: 90%; max-width: 1100px; text-align: center; }
 .modalVideo { width: 100%; height: 600px; border: none; border-radius: 20px; box-shadow: 0 0 50px #7b2cbf; }
 .videoBox h2 { margin-top: 20px; font-size: 2rem; color: #d9b3ff; letter-spacing: 2px; }
-.closeBtn { position: absolute; top: 20px; right: 30px; width: 60px; height: 60px; border: none; border-radius: 50%; font-size: 2rem; cursor: pointer; background: #7b2cbf; color: white; transition: transform .3s ease; }
+.closeBtn { position: absolute; top: 20px; right: 30px; width: 60px; height: 60px; border: none; border-radius: 50%; font-size: 2rem; cursor: pointer; background: #7b2cbf; color: white; transition: transform .3s ease; -webkit-tap-highlight-color: transparent; }
 .closeBtn:hover { transform: scale(1.1) rotate(90deg); }
 
 .footer { padding: 25px; border-top: 2px solid #7b2cbf; text-align: center; background: #000; margin-top: 50px; position: relative; z-index: 4; }
 .copyright { color: #aaa; font-size: 1rem; }
 
 /* ================= RESPONSIVE DESIGN ================= */
-
 
 @media (max-width: 1200px) {
   .tombStone3d {
@@ -325,21 +330,6 @@
   .sabbathPage {
     background-attachment: scroll;
   }
-  .sabbathNav {
-    padding: 10px 0;
-  }
-  .navContainer {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px;
-  }
-  .navDivider {
-    display: none;
-  }
-  .navItem {
-    font-size: 0.8rem;
-    padding: 7px 10px;
-  }
   .rockHeader {
     padding-top: 85px;
   }
@@ -369,6 +359,11 @@
   }
   .particles {
     display: none;
+  }
+  .carouselArrow {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
   }
   .videoLaunchBtn {
     padding: 12px 22px;
@@ -401,16 +396,19 @@
   .carousel3d {
     transform: scale(0.52);
   }
+  .carouselArrow {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+  .carouselArrowLeft { left: 4px; }
+  .carouselArrowRight { right: 4px; }
   .videoLaunchBtn {
     padding: 10px 16px;
     font-size: 0.76rem;
   }
   .modalVideo {
     height: 200px;
-  }
-  .navItem {
-    font-size: 0.7rem;
-    padding: 6px 8px;
   }
 }
  
@@ -420,5 +418,12 @@
   }
   .carousel3d {
     transform: scale(0.44);
+  }
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .sabbathPage {
+    min-height: 100dvh;
   }
 }

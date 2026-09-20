@@ -9,7 +9,10 @@
 .sabbathPage {
     font-family: 'Cinzel', serif;
     min-height: 100vh;
-    overflow-x: hidden; /* Evita scroll lateral por las partículas */
+    overflow: hidden; /* eje X: evita scroll lateral por las partículas.
+       Eje Y: recorta el brillo de los .spotlight (height:1400px) que antes
+       se extendía mucho más abajo del footer real y generaba un hueco
+       fantasma al hacer scroll hasta el final. */
     position: relative;
     color: white;
     background-image: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .85)), var(--bg-image);
@@ -35,46 +38,6 @@
     filter: blur(30px);
     animation: fogMove 15s infinite alternate;
     z-index: 4;
-}
-
-/* ================= NAV ================= */
-.sabbathNav {
-    background: linear-gradient(to right, #000, #0a000f, #000);
-    padding: 15px 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 3px solid #7b2cbf;
-    box-shadow: 0 0 20px rgba(123, 44, 191, .7);
-}
-
-.navContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.navItem {
-    color: #cfcfcf;
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 10px 15px;
-    font-weight: 700;
-    transition: .3s;
-}
-
-.navItem:hover {
-    color: white;
-    text-shadow: 0 0 15px #7b2cbf;
-}
-
-.navDivider { color: #7b2cbf; }
-
-.sabbathActive {
-    color: #cfaeff;
-    text-shadow: 0 0 15px #7b2cbf;
 }
 
 /* ================= HERO & CONCERT ================= */
@@ -236,21 +199,6 @@
   .sabbathPage {
     background-attachment: scroll;
   }
-  .sabbathNav {
-    padding: 10px 0;
-  }
-  .navContainer {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px;
-  }
-  .navDivider {
-    display: none;
-  }
-  .navItem {
-    font-size: 0.8rem;
-    padding: 7px 10px;
-  }
   .concertHero {
     padding-top: 80px;
   }
@@ -294,17 +242,17 @@
     font-size: 0.75rem;
     letter-spacing: 3px;
   }
-  .navItem {
-    font-size: 0.7rem;
-    padding: 6px 8px;
-  }
 }
  
 @media (max-width: 360px) {
   .concertTitle {
     font-size: 2.6rem;
   }
-  .navItem {
-    font-size: 0.62rem;
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .sabbathPage {
+    min-height: 100dvh;
   }
 }

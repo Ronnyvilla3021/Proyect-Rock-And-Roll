@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './Kiss.module.css';
+import KissNav from '../../components/nav/KissNav';
 
 const Kiss = () => {
     return (
@@ -20,16 +20,7 @@ const Kiss = () => {
                 ))}
             </div>
 
-            {/* Navegación */}
-            <nav className={styles.kissNav}>
-                <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navItem}>INICIO</Link>
-                    <Link to="/kiss" className={`${styles.navItem} ${styles.kissActive}`}>KISS</Link>
-                    <Link to="/kiss/historia" className={styles.navItem}>HISTORIA</Link>
-                    <Link to="/kiss/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                    <Link to="/kiss/grupo" className={styles.navItem}>GRUPO</Link>
-                </div>
-            </nav>
+            <KissNav active="kiss" />
 
             {/* Contenido principal */}
             <main className={styles.mainContent}>

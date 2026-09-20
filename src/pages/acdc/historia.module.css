@@ -30,38 +30,6 @@
     z-index: 1;
 }
 
-/* ================= NAV ================= */
-.nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid #ff0000;
-    z-index: 1000;
-}
-
-.link {
-    color: #aaa;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.link:hover {
-    color: #ffcc00;
-}
-
-.active {
-    color: #ff0000;
-    text-decoration: none !important; /* Fuerza la eliminación de subrayado */
-    border-bottom: none !important;   /* Fuerza la eliminación de cualquier borde inferior */
-    outline: none;                    /* Elimina posibles resaltados de foco */
-}
-
 /* ================= HEADER ================= */
 .header {
     margin-top: 100px;
@@ -161,23 +129,6 @@
 }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-    .timeline::before { left: 20px; }
-
-    .itemLeft,
-    .itemRight {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-left: 50px;
-    }
-
-    .content,
-    .timelineImage {
-        width: 100%;
-    }
-
-    .node { left: 20px; }
-}
 
 /* ================= RESPONSIVE DESIGN ================= */
 
@@ -194,17 +145,6 @@
 @media (max-width: 768px) {
   .page {
     background-attachment: scroll;
-  }
-  .nav {
-    gap: 6px;
-    padding: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .link,
-  .active {
-    font-size: 0.72rem;
-    padding: 4px 6px;
   }
   .header {
     margin-top: 85px;
@@ -272,5 +212,12 @@
   }
   .content h3 {
     font-size: 0.9rem;
+  }
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .page {
+    min-height: 100dvh;
   }
 }

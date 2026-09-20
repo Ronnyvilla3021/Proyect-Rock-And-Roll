@@ -1,7 +1,7 @@
 /* ================================= */
 /* IMPORTACIONES Y CONFIG BASE */
 /* ================================= */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -26,48 +26,6 @@
 }
 
 .rockContainer > * { position: relative; z-index: 1; }
-
-/* ================================= */
-/* NAVBAR (Igual al primer código) */
-/* ================================= */
-.rockNav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.rockNavContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 18px; /* Ajustado para coincidir */
-    margin: 0;     /* Eliminado el max-width para que sea igual */
-}
-
-.rockNavItem {
-    color: #bdbdbd;
-    text-decoration: none;
-    padding: 10px 16px;
-    transition: 0.3s;
-    font-weight: 700;
-}
-
-.rockNavItem:hover { 
-    color: white; 
-}
-
-.rockDivider { 
-    color: #555; 
-}
-
-.rockActive { 
-    color: white; 
-}
 
 /* ================================= */
 /* HEADER */
@@ -124,6 +82,7 @@
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
     transform-style: preserve-3d;
     animation: batFlight infinite ease-in-out;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .batAlbumContainer:hover {
@@ -245,14 +204,6 @@
 }
  
 @media (max-width: 768px) {
-  .rockNavContainer {
-    padding: 12px;
-    gap: 0;
-  }
-  .rockNavItem {
-    font-size: 0.78rem;
-    padding: 8px 10px;
-  }
   .rockHeader {
     padding-top: 90px;
   }
@@ -319,5 +270,12 @@
   }
   .rockTitle {
     font-size: 2.6rem;
+  }
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .rockContainer {
+    min-height: 100dvh;
   }
 }

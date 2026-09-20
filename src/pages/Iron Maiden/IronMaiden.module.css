@@ -25,65 +25,6 @@
     z-index: 0;
 }
 
-/* HEADER Y MENÚ */
-.header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.maidenNav {
-    background: linear-gradient(to right, #020611, #08111f, #020611);
-    padding: 15px 0;
-    border-bottom: 3px solid #00ffff;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
-}
-
-.navContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
-.navLinks {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.navItem {
-    color: #cfd8dc;
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 10px 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    font-weight: 700;
-}
-
-.navItem:hover, .maidenActive {
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
-}
-
-.navLogo {
-    font-family: 'Permanent Marker', cursive;
-    color: #e51313;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    line-height: 1;
-    padding-left: 10px;
-    text-shadow: 2px 2px 0 #000, -1px -1px 0 #fff;
-    letter-spacing: -1px;
-    white-space: nowrap;
-}
-
 /* SECCIÓN HERO */
 .heroSection {
     min-height: 100vh;
@@ -147,6 +88,7 @@
     font-size: 1.1rem;
     letter-spacing: 1px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .ampButton:hover {
@@ -168,38 +110,11 @@
   .heroContent h2 {
     font-size: 2.2rem;
   }
-  .navContainer {
-    gap: 15px;
-    padding: 0 20px;
-  }
 }
  
 @media (max-width: 768px) {
   .maidenPage {
     background-attachment: scroll;
-  }
-  .maidenNav {
-    padding: 10px 0;
-  }
-  .navContainer {
-    flex-direction: column;
-    gap: 6px;
-    padding: 8px 12px;
-  }
-  .navLinks {
-    gap: 4px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .navItem {
-    font-size: 0.78rem;
-    padding: 6px 10px;
-    letter-spacing: 0.5px;
-  }
-  .navLogo {
-    font-size: 1.4rem;
-    padding-left: 0;
-    margin-top: 4px;
   }
   .heroSection {
     padding-top: 140px;
@@ -234,13 +149,6 @@
 }
  
 @media (max-width: 480px) {
-  .navItem {
-    font-size: 0.7rem;
-    padding: 5px 8px;
-  }
-  .navLogo {
-    font-size: 1.2rem;
-  }
   .heroContent h2 {
     font-size: 1.25rem;
   }
@@ -250,11 +158,15 @@
 }
  
 @media (max-width: 360px) {
-  .navItem {
-    font-size: 0.62rem;
-    padding: 4px 6px;
-  }
   .heroContent h2 {
     font-size: 1.1rem;
+  }
+}
+
+/* Fix 100vh en iOS Safari (barra de direcciones dinámica) */
+@supports (min-height: 100dvh) {
+  .maidenPage,
+  .heroSection {
+    min-height: 100dvh;
   }
 }

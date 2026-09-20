@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './KissGrupo.module.css';
+import KissNav from '../../components/nav/KissNav';
 
 /* IMÁGENES */
 import portada from '../../images/kiss/portada.jpg';
@@ -34,30 +34,7 @@ const warriors = [
 const KissGrupo = () => {
     return (
         <div className={styles.kissPage} style={{ '--bg-image': `url(${portada})` }}>
-            <nav className={styles.kissNav}>
-    <div className={styles.navContainer}>
-        <Link to="/" className={styles.navItem}>INICIO</Link>
-
-        <Link to="/kiss" className={styles.navItem}>
-            KISS
-        </Link>
-
-        <Link to="/kiss/historia" className={styles.navItem}>
-            HISTORIA
-        </Link>
-
-        <Link to="/kiss/albunes" className={styles.navItem}>
-            ÁLBUMES
-        </Link>
-
-        <Link
-            to="/kiss/grupo"
-            className={`${styles.navItem} ${styles.kissActive}`}
-        >
-            GRUPO
-        </Link>
-    </div>
-</nav>
+            <KissNav active="grupo" />
 
             <header className={styles.hero}>
                 <h1>GRUPO</h1>
@@ -100,7 +77,7 @@ const KissGrupo = () => {
                 <div className={styles.warriorsGrid}>
                     {warriors.map(member => (
                         <div key={member.name} className={styles.warriorCard}>
-                            <img src={member.image} alt={member.name} className={styles.warriorImage} />
+                            <img src={member.image} alt={member.name} className={styles.warriorImage} loading="lazy" />
                             <div className={styles.warriorInfo}>
                                 <div className={styles.warriorIcon}>{member.icon}</div>
                                 <h3>{member.name}</h3>

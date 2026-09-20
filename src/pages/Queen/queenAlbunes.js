@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './queenAlbunes.module.css';
+import QueenNav from '../../components/nav/QueenNav';
 
 /* IMPORTACIÓN DE PORTADAS */
 import imgQueenI from '../../images/queen/queen.jpg';
@@ -27,7 +27,7 @@ const queenAlbumsData = [
     { title: "A Day at the Races", year: 1976, img: imgRaces, videoId: "kijpcUv-b8M", discografica: "EMI / Elektra" },
     { title: "News of the World", year: 1977, img: imgNews, videoId: "-tJYN-eG1zk", discografica: "EMI / Elektra" },
     { title: "Jazz", year: 1978, img: imgJazz, videoId: "HgzGwKwLmgM", discografica: "EMI / Elektra" },
-    { title: "The Game", year: 1980, img: imgTheGame, videoId: "eqyUAtzS_6M", discografica: "EMI / Elektra" },
+    { title: "The Game", year: 1980, img: imgTheGame, videoId:"OYWCa3sW1N0", discografica: "EMI / Elektra" },
     { title: "Flash Gordon", year: 1980, img: imgFlash, videoId: "LfmrHTdXgK4", discografica: "EMI / Elektra" },
     { title: "Hot Space", year: 1982, img: imgHotSpace, videoId: "a01QQZyl-_I", discografica: "EMI / Elektra" },
     { title: "The Works", year: 1984, img: imgTheWorks, videoId: "azdwsXLmrHE", discografica: "EMI / Capitol" },
@@ -42,19 +42,7 @@ const QueenAlbunes = () => {
 
     return (
         <div className={styles.queenPage}>
-            <nav className={styles.queenNav}>
-                <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navItem}>INICIO</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen" className={styles.navItem}>QUEEN</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/historia" className={styles.navItem}>HISTORIA</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/albunes" className={`${styles.navItem} ${styles.queenActive}`}>ÁLBUMES</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/grupo" className={styles.navItem}>GRUPO</Link>
-                </div>
-            </nav>
+            <QueenNav active="albunes" />
 
             <div className={styles.logoContainer}>
                 <h1 className={styles.logo}>DISCOGRAFÍA</h1>
@@ -108,6 +96,7 @@ const QueenAlbunes = () => {
                                         src={`https://www.youtube.com/embed/${selectedAlbum.videoId}?rel=0`}
                                         title={`Video de ${selectedAlbum.title}`}
                                         frameBorder="0"
+                                        loading="lazy"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         allowFullScreen
                                     ></iframe>

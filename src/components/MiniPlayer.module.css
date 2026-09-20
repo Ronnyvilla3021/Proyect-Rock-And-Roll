@@ -1,41 +1,184 @@
 .player {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: calc(20px + env(safe-area-inset-left, 0px));
   display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 10px 18px;
-  background: rgba(20, 20, 20, 0.45);
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 18px;
+  background: rgba(20, 20, 20, 0.55);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 50px;
+  border-radius: 22px;
   color: white;
   z-index: 9999;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  width: 300px;
   max-width: calc(100vw - 40px);
   overflow: hidden;
 }
 
+/* Botón para minimizar (esquina superior derecha del card) */
+.minimizeBtn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.minimizeBtn:hover {
+  color: #fff;
+}
+
+/* ----- FILA SUPERIOR: carátula + info ----- */
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 20px;
+}
+
+.cover {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.trackInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .trackTitle {
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 600;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 0 6px rgba(0,0,0,0.7);
-  letter-spacing: 0.3px;
+  color: #fff;
+  letter-spacing: 0.2px;
 }
 
+.trackArtist {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+/* ----- BARRA DE PROGRESO ----- */
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  min-width: 30px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.progressSlider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  background: linear-gradient(
+    to right,
+    #ff4040 0%,
+    #ff4040 calc(var(--progress, 0) * 100%),
+    rgba(255, 255, 255, 0.2) calc(var(--progress, 0) * 100%),
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  outline: none;
+  cursor: pointer;
+}
+
+.progressSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff4040;
+  box-shadow: 0 0 6px rgba(255, 64, 64, 0.8);
+  cursor: pointer;
+}
+
+.progressSlider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #ff4040;
+  box-shadow: 0 0 6px rgba(255, 64, 64, 0.8);
+  cursor: pointer;
+}
+
+.progressSlider::-moz-range-track {
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.progressSlider:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255, 60, 60, 0.6);
+}
+
+/* ----- CONTROLES ----- */
 .controls {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 
-/* BASE para todos los botones (se aplica a .btn y .playBtn) */
+.player,
+.player * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+.btn,
+.playBtn,
+.minimizeBtn,
+.minimizedTrack {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.btn:focus-visible,
+.playBtn:focus-visible,
+.minimizeBtn:focus-visible,
+.minimizedTrack:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 60, 60, 0.9);
+}
+
 .btn,
 .playBtn {
   display: flex;
@@ -46,260 +189,191 @@
   cursor: pointer;
   transition: all 0.25s ease;
   backdrop-filter: blur(4px);
-  font-size: 1rem;
+  font-size: 0.95rem;
+  background: none;
 }
 
-/* ----- BOTONES LATERALES (ANTERIOR / SIGUIENTE) ----- */
 .sideBtn {
-  background: rgba(200, 40, 40, 0.35);  /* fondo rojo translúcido */
-  border-color: rgba(255, 80, 80, 0.5);
-  color: #ffcccc;                        /* texto rojo claro */
-  width: 34px;
-  height: 34px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 8px rgba(255,0,0,0.2);
+  position: relative;
+  background: rgba(200, 40, 40, 0.3);
+  border-color: rgba(255, 80, 80, 0.45);
+  color: #ffcccc;
+  width: 32px;
+  height: 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .sideBtn:hover {
-  background: rgba(230, 50, 50, 0.65);
+  background: rgba(230, 50, 50, 0.6);
   border-color: rgba(255, 120, 120, 0.9);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.5), 0 0 16px rgba(255, 40, 40, 0.6);
   transform: translateY(-2px) scale(1.05);
 }
 
-/* ----- BOTÓN PLAY/PAUSE CENTRAL ----- */
+.toggleActive {
+  background: rgba(255, 40, 40, 0.75);
+  border-color: #ff8080;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 40, 40, 0.6);
+}
+
 .playBtn {
   background: rgba(255, 70, 70, 0.45);
   border-color: rgba(255, 100, 100, 0.6);
   color: #fff;
-  width: 42px;
-  height: 42px;
-  font-size: 1.25rem;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.35), 0 0 12px rgba(255, 40, 40, 0.4);
+  width: 40px;
+  height: 40px;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 40, 40, 0.4);
 }
 
 .playBtn:hover {
   background: rgba(255, 50, 50, 0.7);
   border-color: rgba(255, 150, 150, 0.8);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.5), 0 0 20px rgba(255, 40, 40, 0.7);
-  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 40, 40, 0.7);
+  transform: translateY(-2px) scale(1.06);
 }
 
 .playBtn:active {
   transform: translateY(0) scale(0.98);
 }
 
+/* ----- ESTADO MINIMIZADO ----- */
+.playerMinimized {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  width: auto;
+  border-radius: 50px;
+}
+
+.minimizedTrack {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  max-width: 160px;
+  padding: 0;
+}
+
+.miniCover {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.playerMinimized .trackTitle {
+  font-size: 0.72rem;
+}
+
+.playerMinimized .playBtn {
+  width: 32px;
+  height: 32px;
+  font-size: 0.9rem;
+}
+
+/* Badge "1" para el modo repetir-una-canción */
+.repeatOneBadge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  background: #ff4040;
+  color: #fff;
+  font-size: 0.5rem;
+  font-weight: 700;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
 /* ============================================================
-   HOME & MINIPLAYER — RESPONSIVE COMPLETO
+   RESPONSIVE — MiniPlayer
    ============================================================ */
-
-/* ─── Home.module.css ─── */
-@media (max-width: 1200px) {
-  .heroContent h1 {
-    font-size: 5.5rem;
-  }
-  .cardSection {
-    gap: 12px;
-  }
-  .card {
-    width: 140px;
-    height: 168px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .heroSection {
-    grid-template-columns: 1fr;
-    padding: 20px 30px;
-    height: auto;
-    min-height: 100vh;
-    gap: 30px;
-    text-align: center;
-    align-items: center;
-  }
-  .heroOverlay {
-    background: linear-gradient(180deg, rgba(0,0,0,0.88), rgba(0,0,0,0.6));
-  }
-  .heroContent {
-    max-width: 100%;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .heroContent h1 {
-    font-size: 4.5rem;
-    line-height: 1.05;
-  }
-  .subtitle {
-    font-size: 0.85rem;
-    letter-spacing: 4px;
-  }
-  .heroContent p {
-    max-width: 460px;
-    font-size: 0.95rem;
-  }
-  .player {
-    max-width: 240px;
-  }
-  .cardSection {
-    justify-self: center;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    padding-bottom: 50px;
-  }
-  .card {
-    width: 148px;
-    height: 175px;
-  }
-}
-
 @media (max-width: 768px) {
-  .heroSection {
-    padding: 20px;
-    gap: 24px;
-  }
-  .heroContent h1 {
-    font-size: 3.5rem;
-  }
-  .heroContent p {
-    font-size: 0.88rem;
-    line-height: 1.6;
-  }
-  .subtitle {
-    font-size: 0.78rem;
-    letter-spacing: 3px;
-  }
   .player {
-    margin-top: 18px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    left: calc(12px + env(safe-area-inset-left, 0px));
+    width: 260px;
+    max-width: calc(100vw - 24px);
+    padding: 12px 16px;
+    border-radius: 18px;
   }
-  .controls button {
+  .cover {
     width: 38px;
     height: 38px;
-    font-size: 0.95rem;
-  }
-  .nowPlaying {
-    font-size: 0.7rem;
-  }
-  .cardSection {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding-bottom: 40px;
-    max-width: 340px;
-  }
-  .card {
-    width: 100%;
-    height: 160px;
-  }
-  .card__img {
-    height: 115px;
-  }
-  .card__footer {
-    font-size: 0.6rem;
-    padding: 5px;
-  }
-}
-
-@media (max-width: 480px) {
-  .heroContent {
-    margin-top: 40px;
-  }
-  .heroContent h1 {
-    font-size: 2.6rem;
-    line-height: 1;
-  }
-  .heroContent p {
-    font-size: 0.82rem;
-  }
-  .cardSection {
-    max-width: 300px;
-    gap: 10px;
-  }
-  .card {
-    height: 145px;
-  }
-  .card__img {
-    height: 100px;
-  }
-  .card__footer {
-    font-size: 0.56rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .heroContent h1 {
-    font-size: 2.1rem;
-  }
-  .cardSection {
-    max-width: 260px;
-    gap: 8px;
-  }
-  .card {
-    height: 130px;
-  }
-}
-
-/* ─── MiniPlayer.module.css ─── */
-@media (max-width: 768px) {
-  .player {
-    bottom: 14px;
-    left: 12px;
-    padding: 8px 14px;
-    gap: 10px;
-    max-width: calc(100vw - 24px);
-    border-radius: 40px;
   }
   .trackTitle {
-    font-size: 0.72rem;
-    max-width: 130px;
+    font-size: 0.76rem;
   }
-  .controls {
-    gap: 8px;
+  .trackArtist {
+    font-size: 0.65rem;
   }
   .sideBtn {
-    width: 30px;
-    height: 30px;
-    font-size: 0.88rem;
+    width: 29px;
+    height: 29px;
+    font-size: 0.85rem;
   }
   .playBtn {
-    width: 37px;
-    height: 37px;
-    font-size: 1.1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
+  }
+  .playerMinimized {
+    padding: 7px 10px;
   }
 }
 
 @media (max-width: 480px) {
   .player {
-    bottom: 10px;
-    left: 10px;
-    padding: 7px 12px;
-    gap: 8px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    left: calc(10px + env(safe-area-inset-left, 0px));
+    width: 230px;
     max-width: calc(100vw - 20px);
+    padding: 10px 14px;
+  }
+  .cover {
+    width: 34px;
+    height: 34px;
   }
   .trackTitle {
-    font-size: 0.66rem;
-    max-width: 100px;
+    max-width: 110px;
   }
   .sideBtn {
-    width: 28px;
-    height: 28px;
-    font-size: 0.82rem;
+    width: 27px;
+    height: 27px;
+    font-size: 0.78rem;
   }
   .playBtn {
     width: 33px;
     height: 33px;
     font-size: 1rem;
   }
+  .controls {
+    gap: 7px;
+  }
 }
 
 @media (max-width: 360px) {
+  .player {
+    width: 205px;
+  }
   .trackTitle {
-    max-width: 80px;
-    font-size: 0.62rem;
+    max-width: 90px;
+    font-size: 0.68rem;
   }
   .sideBtn {
-    width: 26px;
-    height: 26px;
+    width: 25px;
+    height: 25px;
   }
   .playBtn {
     width: 30px;

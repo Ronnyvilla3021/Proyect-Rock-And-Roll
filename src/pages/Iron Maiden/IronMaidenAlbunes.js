@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
 import styles from './IronMaidenAlbunes.module.css';
+import IronMaidenNav from '../../components/nav/IronMaidenNav';
 
 import ironmaiden from '../../images/ironmaiden/ironmaiden.jpg';
 import killers from '../../images/ironmaiden/killers.jpg';
@@ -33,7 +33,7 @@ const albums = [
     { name: "The X Factor", year: "1995", cover: thexfactor, video: "https://www.youtube.com/embed/u5UqJWRV55E" },
     { name: "Virtual XI", year: "1998", cover: virtualxi, video: "https://www.youtube.com/embed/t3ymU8rbEhw" },
     { name: "Brave New World", year: "2000", cover: bravenewworld, video: "https://www.youtube.com/embed/-sQ3Af3DpeM" },
-    { name: "Dance of Death", year: "2003", cover: danceofdeath, video: "https://www.youtube.com/embed/XpV8yNNGiqI" },
+    { name: "Dance of Death", year: "2003", cover: danceofdeath, video: "https://www.youtube.com/embed/GoBok1xd93M?si=QgFPF47WkyZvEKTb" },
     { name: "A Matter of Life and Death", year: "2006", cover: amatteroflifeanddeath, video: "https://www.youtube.com/embed/fmx1usEg--k" },
     { name: "The Final Frontier", year: "2010", cover: thefinalfrontier, video: "https://www.youtube.com/embed/xMlaFD3s-1s" },
     { name: "The Book of Souls", year: "2015", cover: thebookofsouls, video: "https://www.youtube.com/embed/-F7A24f6gNc" },
@@ -42,23 +42,16 @@ const albums = [
 
 const IronMaidenAlbunes = () => {
     const [currentVideo, setCurrentVideo] = useState("https://www.youtube.com/embed/Xg9aQvjMS60");
+    const videoRef = useRef(null);
+
+    const handleAlbumClick = (video) => {
+        setCurrentVideo(video);
+        videoRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
 
     return (
         <div className={styles.maidenPage}>
-            <header className={styles.header}>
-                <nav className={styles.maidenNav}>
-                    <div className={styles.navContainer}>
-                        <div className={styles.navLinks}>
-                            <Link to="/" className={styles.navItem}>INICIO</Link>
-                            <Link to="/ironmaiden" className={styles.navItem}>IRON MAIDEN</Link>
-                            <Link to="/ironmaiden/historia" className={styles.navItem}>HISTORIA</Link>
-                            <Link to="/ironmaiden/albunes" className={`${styles.navItem} ${styles.maidenActive}`}>ÁLBUMES</Link>
-                            <Link to="/ironmaiden/grupo" className={styles.navItem}>GRUPO</Link>
-                        </div>
-                        <div className={styles.navLogo}>IRON MAIDEN</div>
-                    </div>
-                </nav>
-            </header>
+            <IronMaidenNav active="albunes" />
 
             <main className={styles.mainContent}>
                 <div className={styles.galleryWrapper}>
@@ -66,24 +59,25 @@ const IronMaidenAlbunes = () => {
                         <div
                             key={index}
                             className={styles.vinylWrapper}
-                            onClick={() => setCurrentVideo(album.video)}
+                            onClick={() => handleAlbumClick(album.video)}
                         >
                             <div className={styles.vinylDisc}></div>
                             <div className={styles.vinylCover}>
-                                <img src={album.cover} alt={album.name} />
+                                <img src={album.cover} alt={album.name} loading="lazy" />
                             </div>
                             <h3 className={styles.albumTitle}>{album.name}</h3>
                             <span className={styles.albumYear}>{album.year}</span>
                         </div>
                     ))}
 
-                    <div className={styles.centerVideo}>
+                    <div className={styles.centerVideo} ref={videoRef}>
                         <iframe
                             width="100%"
                             height="100%"
                             src={currentVideo}
                             title="Iron Maiden Player"
                             frameBorder="0"
+                            loading="lazy"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         />

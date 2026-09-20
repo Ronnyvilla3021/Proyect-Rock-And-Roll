@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
 import styles from './KissHistoria.module.css';
+import KissNav from '../../components/nav/KissNav';
 
 const KissHistoria = () => {
     const [scrollProgress, setScrollProgress] = useState(0);
+    const tickingRef = useRef(false);
 
     useEffect(() => {
         const sections = document.querySelectorAll(`.${styles.rockSection}`);
@@ -21,10 +22,18 @@ const KissHistoria = () => {
 
         sections.forEach(sec => observer.observe(sec));
 
-        const handleScroll = () => {
+        const updateProgress = () => {
             const totalHeight = document.body.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
+            const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
             setScrollProgress(progress);
+            tickingRef.current = false;
+        };
+
+        const handleScroll = () => {
+            if (!tickingRef.current) {
+                tickingRef.current = true;
+                requestAnimationFrame(updateProgress);
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -43,16 +52,7 @@ const KissHistoria = () => {
                 style={{ width: `${scrollProgress}%` }}
             />
 
-            {/* NAV */}
-            <nav className={styles.kissNav}>
-                <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navItem}>INICIO</Link>
-                    <Link to="/kiss" className={styles.navItem}>KISS</Link>
-                    <Link to="/kiss/historia" className={`${styles.navItem} ${styles.active}`}>HISTORIA</Link>
-                    <Link to="/kiss/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                    <Link to="/kiss/grupo" className={styles.navItem}>GRUPO</Link>
-                </div>
-            </nav>
+            <KissNav active="historia" />
 
             {/* HERO */}
             <div className={styles.logoContainer}>

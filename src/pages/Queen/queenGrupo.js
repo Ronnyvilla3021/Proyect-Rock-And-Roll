@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './queenGrupo.module.css';
+import QueenNav from '../../components/nav/QueenNav';
 
 // Importación de imágenes
 import imgFreddie from '../../images/queen/freddiemercury.jpg';
@@ -45,19 +45,7 @@ const QueenGrupo = () => {
 
     return (
         <div className={styles.queenPage}>
-            <nav className={styles.queenNav}>
-                <div className={styles.navContainer}>
-                    <Link to="/" className={styles.navItem}>INICIO</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen" className={styles.navItem}>QUEEN</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/historia" className={styles.navItem}>HISTORIA</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/albunes" className={styles.navItem}>ÁLBUMES</Link>
-                    <span className={styles.navDivider}>|</span>
-                    <Link to="/queen/grupo" className={`${styles.navItem} ${styles.queenActive}`}>GRUPO</Link>
-                </div>
-            </nav>
+            <QueenNav active="grupo" />
 
             <header className={styles.logoContainer}>
                 <h1 className={styles.logo}>GRUPO</h1>
